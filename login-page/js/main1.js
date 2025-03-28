@@ -9,6 +9,6 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     const user = users.find(user => user.email === email && user.password === password);
 
     if (user) {
-        window.location.href = `/home-page/home1.html?name=${encodeURIComponent(user.name)}&email=${encodeURIComponent(user.email)}`;
+        window.location.href = `home-page/home1.html?name=${encodeURIComponent(user.name)}&email=${encodeURIComponent(user.email)}`;
     }
 });
