@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusJobs - Find Freelance Work</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Slab:wght@700&family=Open+Sans:ital,wght@1,400&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+        }
+
+        .header {
+            background-color: white;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand {
+            color: #38d39f;
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+        }
+
+        .content,
+        .profile-container,
+        .completed-jobs {
+            margin-top: 60px;
+            padding: 20px;
+            display: none;
+        }
+
+        .content.active,
+        .profile-container.active,
+        .completed-jobs.active {
+            display: block;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .job-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job-list li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #38d39f;
+        }
+
+        .job-list li h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .job-list li p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-style: italic;
+            color: #555;
+            margin: 5px 0 0;
+        }
+
+        .job-list li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .job-list li a:hover {
+            color: #38d39f;
+        }
+
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .nav-bar a {
+            color: #38d39f;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-bar a.active,
+        .nav-bar a:hover {
+            background: #38d39f;
+            color: white;
+        }
+
+        .profile-container {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+            min-height: 100vh;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid #38d39f;
+            background: url('propic.png') no-repeat center/cover;
+            margin: 0 auto 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.08);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 27px;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .profile-role {
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .profile-info {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .profile-info p {
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            margin: 30px 0;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: #f8f8f8;
+        }
+
+        .profile-info p span {
+            color: #38d39f;
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 768px) {
+            .profile-container {
+                padding: 40px 10px;
+            }
+
+            .profile-card {
+                width: 100%;
+                padding: 30px;
+            }
+
+            .profile-name {
+                font-size: 26px;
+            }
+
+            .profile-info p {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+        }
+
+        .completed-jobs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .completed-jobs li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #38d39f;
+        }
+
+        .completed-jobs h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+        }
+    </style>
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.content, .profile-container, .completed-jobs').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.querySelectorAll('.nav-bar a').forEach(el => el.classList.remove('active'));
+            document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.add('active');
+        }
+    </script>
+</head>
+
+<body onload="showTab('jobs')">
+    <div class="header"><span class="brand">CampusJobs</span></div>
+    <div id="jobs" class="content active">
+        <h2 class="heading">Works Available at Your Campus</h2>
+        <ul class="job-list">
+            <li>
+                <h3><a href="#">Software Engineer at Microsoft</a></h3>
+                <p>Develop scalable applications with cloud integration.</p>
+            </li>
+            <li>
+                <h3><a href="#">Data Analyst at IBM</a></h3>
+                <p>Analyze business data to derive meaningful insights.</p>
+            </li>
+            <li>
+                <h3><a href="#">Cybersecurity Specialist at Cisco</a></h3>
+                <p>Protect systems and networks from cyber threats.</p>
+            </li>
+            <li>
+                <h3><a href="#">Machine Learning Intern at OpenAI</a></h3>
+                <p>Work on AI models and deep learning algorithms.</p>
+            </li>
+            <li>
+                <h3><a href="#">Backend Developer at Facebook</a></h3>
+                <p>Design server-side applications and database architecture.</p>
+            </li>
+            <li>
+                <h3><a href="#">Marketing Strategist at Apple</a></h3>
+                <p>Develop digital marketing campaigns for product launches.</p>
+            </li>
+            <li>
+                <h3><a href="#">UI/UX Designer at Adobe</a></h3>
+                <p>Design user-friendly interfaces for web and mobile apps.</p>
+            </li>
+            <li>
+                <h3><a href="#">Cloud Engineer at Google Cloud</a></h3>
+                <p>Manage cloud infrastructure and optimize deployment.</p>
+            </li>
+            <li>
+                <h3><a href="#">DevOps Engineer at Tesla</a></h3>
+                <p>Automate and streamline software development pipelines.</p>
+            </li>
+            <li>
+                <h3><a href="#">Game Developer at Epic Games</a></h3>
+                <p>Develop high-performance gaming applications.</p>
+            </li>
+            <br>
+            <br>
+        </ul>
+
+    </div>
+    <div id="completed" class="completed-jobs">
+        <h2 class="heading">Completed Jobs</h2>
+        <ul>
+            <li>
+                <h3>Graphic Designer at Infosys</h3>
+                <p>Completed - Certificate Available</p>
+            </li>
+            <li>
+                <h3>Content Writer at Google</h3>
+                <p>Completed - Verified</p>
+            </li>
+            <li>
+                <h3>Cloud Engineer at Oracle</h3>
+                <p>Completed - Certificate Available</p>
+            </li>
+        </ul>
+    </div>
+    <div class="nav-bar">
+        <a onclick="showTab('jobs')" class="active">Jobs</a>
+        <a onclick="showTab('completed')">Completed Jobs</a>
+        <a onclick="showTab('profile')">Profile</a>
+    </div>
+    <div id="profile" class="profile-container">
+        <div class="profile-card">
+            <div class="profile-pic"></div>
+            <h2 class="profile-name" id="profileName">John Doe</h2>
+            <p class="profile-role">Freelance Developer</p>
+            <div class="profile-info">
+                <p id="profileEmail"><span>Email:</span> johndoe@example.com</p>
+                <p><span>Phone:</span> +1234567890</p>
+                <p><span>Skills:</span> HTML, CSS, JavaScript, React, Node.js</p>
+                <p><span>Completed Projects:</span> 3</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+    
+        const userName = getQueryParam("name");
+        const userEmail = getQueryParam("email");
+    
+        console.log("User Name from URL:", userName);
+        console.log("User Email from URL:", userEmail);
+    
+        if (userName && userEmail) {
+            document.getElementById("profileName").textContent = userName;
+            document.getElementById("profileEmail").textContent = userEmail;
+        } else {
+            console.log("No user found, redirecting to login...");
+            window.location.href = "../login.html"; // Redirect if no user data
+        }
+    
+        function logout() {
+            window.close();
+            window.location.href = "../login.html"; // Logout by redirecting
+        }
+    </script>
+    
+
+</body>
+
+</html>

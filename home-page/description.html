@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Description</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1,
+        h2 {
+            color: #222;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            margin-top: 20px;
+            padding: 15px;
+            border-left: 4px solid #38d39f;
+            background: #f0fdf4;
+            border-radius: 5px;
+        }
+
+        .section h3 {
+            color: #2fa886;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .apply-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            background: #38d39f;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #2fa886;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 10px;
+            }
+
+            .apply-btn {
+                font-size: 18px;
+                padding: 12px;
+            }
+        }
+    </style>
+    <script>
+        function getJobDetails() {
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById("jobTitle").textContent = params.get("title") || "Not Specified";
+            document.getElementById("companyName").textContent = params.get("company") || "Not Specified";
+            document.getElementById("jobDesc").textContent = params.get("description") || "Not Specified";
+            document.getElementById("jobOverview").textContent = params.get("overview") || "Not Specified";
+            document.getElementById("jobResponsibilities").innerHTML = formatList(params.get("responsibilities"));
+            document.getElementById("jobQualifications").innerHTML = formatList(params.get("qualifications"));
+            document.getElementById("jobBenefits").innerHTML = formatList(params.get("benefits"));
+            document.getElementById("jobLocation").textContent = params.get("location") || "Not Specified";
+            document.getElementById("jobSalary").textContent = params.get("salary") || "Not Specified";
+        }
+
+        function formatList(text) {
+            if (!text) return "Not Specified";
+            return "<ul><li>" + text.split('. ').join("</li><li>") + "</li></ul>";
+        }
+
+        window.onload = getJobDetails;
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 id="jobTitle">Loading...</h2>
+        <p class="info"><strong>Company:</strong> <span id="companyName"></span></p>
+        <p class="info"><strong>Location:</strong> <span id="jobLocation"></span></p>
+        <p class="info"><strong>Salary:</strong> <span id="jobSalary"></span></p>
+
+        <div class="section">
+            <h3>About the Job</h3>
+            <p id="jobOverview"></p>
+        </div>
+
+        <div class="section">
+            <h3>Job Description</h3>
+            <p id="jobDesc"></p>
+        </div>
+
+        <div class="section">
+            <h3>Responsibilities</h3>
+            <div id="jobResponsibilities"></div>
+        </div>
+
+        <div class="section">
+            <h3>Qualifications</h3>
+            <div id="jobQualifications"></div>
+        </div>
+
+        <div class="section">
+            <h3>Benefits</h3>
+            <div id="jobBenefits"></div>
+        </div>
+
+        <br>
+        <a href="#" id="enrollBtn" class="apply-btn" onclick="enroll()">Apply Now</a>
+
+    </div>
+    <script>
+        function enroll() {
+            event.preventDefault();
+            var button = document.getElementById("enrollBtn");
+            button.textContent = "Enrolled";
+            button.style.background = "#2fa886";
+            button.disabled = true; // Optional: Disable the button after enrolling
+        }
+    </script>
+    
+</body>
+
+</html>

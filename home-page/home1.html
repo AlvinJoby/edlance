@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusJobs - Find Freelance Work</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Slab:wght@700&family=Open+Sans:ital,wght@1,400&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+        }
+
+        .header {
+            background-color: white;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand {
+            color: #38d39f;
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+        }
+
+        .content,
+        .profile-container,
+        .completed-jobs {
+            margin-top: 60px;
+            padding: 20px;
+            display: none;
+        }
+
+        .content.active,
+        .profile-container.active,
+        .completed-jobs.active {
+            display: block;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .job-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job-list li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #38d39f;
+        }
+
+        .job-list li h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .job-list li p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-style: italic;
+            color: #555;
+            margin: 5px 0 0;
+        }
+
+        .job-list li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .job-list li a:hover {
+            color: #38d39f;
+        }
+
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .nav-bar a {
+            color: #38d39f;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-bar a.active,
+        .nav-bar a:hover {
+            background: #38d39f;
+            color: white;
+        }
+
+        .profile-container {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+            min-height: 100vh;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid #38d39f;
+            background: url('propic.png') no-repeat center/cover;
+            margin: 0 auto 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.08);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 27px;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .profile-role {
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .profile-info {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .profile-info p {
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            margin: 30px 0;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: #f8f8f8;
+        }
+
+        .profile-info p span {
+            color: #38d39f;
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 768px) {
+            .profile-container {
+                padding: 40px 10px;
+            }
+
+            .profile-card {
+                width: 100%;
+                padding: 30px;
+            }
+
+            .profile-name {
+                font-size: 26px;
+            }
+
+            .profile-info p {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+        }
+
+        .completed-jobs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .completed-jobs li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #38d39f;
+        }
+
+        .completed-jobs h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+        }
+    </style>
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.content, .profile-container, .completed-jobs').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.querySelectorAll('.nav-bar a').forEach(el => el.classList.remove('active'));
+            document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.add('active');
+        }
+    </script>
+</head>
+
+<body onload="showTab('jobs')">
+    <div class="header"><span class="brand">CampusJobs</span></div>
+    <div id="jobs" class="content active">
+        <h2 class="heading">Works Available at Your Campus</h2>
+        <ul class="job-list">
+            <li>
+                <h3>
+                    <a href="description.html?title=Software Engineer at Microsoft&company=Microsoft&desc=Develop scalable applications with cloud integration.&requirements=Experience in cloud computing, Python, and SQL.&location=Remote&salary=$100,000 per year&overview=As a Software Engineer at Microsoft, you will work on cloud-based solutions that impact millions worldwide. Collaborate with cross-functional teams to deliver cutting-edge applications.&responsibilities=1. Develop and maintain scalable applications. 2. Optimize cloud services for performance. 3. Ensure security and scalability in cloud deployments.&qualifications=1. Bachelor's degree in Computer Science or related field. 2. Proficiency in Python, SQL, and cloud platforms. 3. Strong problem-solving skills.&benefits=1. Competitive salary with bonuses. 2. Work-from-home options. 3. Health insurance and learning opportunities.">
+                        Software Engineer at Microsoft
+                    </a>
+                </h3>
+                <p>Develop scalable applications with cloud integration.</p>
+            </li>
+        
+            <li>
+                <h3>
+                    <a href="description.html?title=Data Analyst at IBM&company=IBM&desc=Analyze business data to derive meaningful insights.&requirements=Experience in SQL, Python, and Data Visualization.&location=New York, USA&salary=$80,000 per year&overview=As a Data Analyst at IBM, you will work with large datasets to extract insights that drive business strategies. You'll collaborate with stakeholders to provide data-driven recommendations.&responsibilities=1. Analyze and visualize business data. 2. Create reports for stakeholders. 3. Work with SQL and Python for data analysis.&qualifications=1. Degree in Data Science or related field. 2. Experience in SQL, Python, and Tableau. 3. Strong analytical skills.&benefits=1. Flexible work schedule. 2. Competitive salary and bonuses. 3. Paid training and certifications.">
+                        Data Analyst at IBM
+                    </a>
+                </h3>
+                <p>Analyze business data to derive meaningful insights.</p>
+            </li>
+        
+            <li>
+                <h3>
+                    <a href="description.html?title=Cybersecurity Specialist at Cisco&company=Cisco&desc=Protect systems and networks from cyber threats.&requirements=Knowledge of network security, penetration testing.&location=San Francisco, USA&salary=$95,000 per year&overview=As a Cybersecurity Specialist at Cisco, you will ensure the security of network infrastructure and prevent cyber threats. Work with a global team to implement advanced security measures.&responsibilities=1. Monitor and analyze security risks. 2. Implement network protection strategies. 3. Conduct security audits and vulnerability assessments.&qualifications=1. Certified in Cybersecurity (CISSP or CEH). 2. Knowledge of penetration testing and security tools. 3. Experience in network security protocols.&benefits=1. Full medical and dental coverage. 2. On-site gym and wellness programs. 3. Annual bonuses and stock options.">
+                        Cybersecurity Specialist at Cisco
+                    </a>
+                </h3>
+                <p>Protect systems and networks from cyber threats.</p>
+            </li>
+        
+            <li>
+                <h3>
+                    <a href="description.html?title=Machine Learning Intern at OpenAI&company=OpenAI&desc=Work on AI models and deep learning algorithms.&requirements=Experience with TensorFlow, PyTorch, and Python.&location=Remote&salary=Paid Internship&overview=Join OpenAI as a Machine Learning Intern and contribute to cutting-edge AI research. Work on deep learning models, experiment with AI frameworks, and develop innovative solutions.&responsibilities=1. Assist in AI model development. 2. Experiment with deep learning algorithms. 3. Collaborate with AI researchers and engineers.&qualifications=1. Experience with TensorFlow and PyTorch. 2. Strong programming skills in Python. 3. Background in AI or Computer Science.&benefits=1. Hands-on experience in AI research. 2. Paid internship with mentorship. 3. Flexible work environment.">
+                        Machine Learning Intern at OpenAI
+                    </a>
+                </h3>
+                <p>Work on AI models and deep learning algorithms.</p>
+            </li>
+        
+            <li>
+                <h3>
+                    <a href="description.html?title=Backend Developer at Facebook&company=Facebook&desc=Design server-side applications and database architecture.&requirements=Proficiency in Node.js, MongoDB, and APIs.&location=California, USA&salary=$110,000 per year&overview=Join Facebook's backend team and build high-performance server-side applications. Work with large-scale databases and develop APIs to support millions of users.&responsibilities=1. Design and optimize backend systems. 2. Develop secure and scalable APIs. 3. Work with cloud platforms and microservices.&qualifications=1. Proficiency in Node.js and MongoDB. 2. Experience in API development. 3. Strong knowledge of backend security.&benefits=1. Remote work flexibility. 2. Competitive salary with performance bonuses. 3. Free meals and on-site fitness center.">
+                        Backend Developer at Facebook
+                    </a>
+                </h3>
+                <p>Design server-side applications and database architecture.</p>
+            </li>
+        
+            <li>
+                <h3>
+                    <a href="description.html?title=Cloud Engineer at Google Cloud&company=Google Cloud&desc=Manage cloud infrastructure and optimize deployment.&requirements=Experience in AWS, Kubernetes, and DevOps.&location=Seattle, USA&salary=$120,000 per year&overview=As a Cloud Engineer at Google Cloud, you will design, build, and maintain cloud infrastructure for enterprise solutions. Work with teams to ensure reliability and scalability.&responsibilities=1. Deploy and manage cloud services. 2. Optimize infrastructure for performance and cost-efficiency. 3. Automate cloud operations.&qualifications=1. Experience in AWS or Google Cloud. 2. Proficiency in Kubernetes and Terraform. 3. Strong DevOps and system administration skills.&benefits=1. Competitive salary with stock options. 2. Free Google perks (meals, gym, transport). 3. Career growth opportunities.">
+                        Cloud Engineer at Google Cloud
+                    </a>
+                </h3>
+                <p>Manage cloud infrastructure and optimize deployment.</p>
+            </li>
+        
+            <li>
+                <h3>
+                    <a href="description.html?title=Game Developer at Epic Games&company=Epic Games&desc=Develop high-performance gaming applications.&requirements=Experience with Unreal Engine, C++ programming.&location=Los Angeles, USA&salary=$105,000 per year&overview=As a Game Developer at Epic Games, you will build immersive gaming experiences using Unreal Engine. Work with a talented team to create high-quality game mechanics and environments.&responsibilities=1. Develop interactive game features. 2. Optimize game performance. 3. Collaborate with designers and artists.&qualifications=1. Proficiency in C++ and Unreal Engine. 2. Experience with 3D rendering and physics engines. 3. Passion for game development.&benefits=1. Employee stock options. 2. Access to gaming resources and tools. 3. Work on AAA gaming titles.">
+                        Game Developer at Epic Games
+                    </a>
+                </h3>
+                <p>Develop high-performance gaming applications.</p>
+            </li>
+        </ul>
+        
+        
+
+    </div>
+    <div id="completed" class="completed-jobs">
+        <h2 class="heading">Completed Jobs</h2>
+        <ul>
+            <li>
+                <h3>Graphic Designer at Infosys</h3>
+                <p>Completed - Certificate Available</p>
+            </li>
+            <li>
+                <h3>Content Writer at Google</h3>
+                <p>Completed - Verified</p>
+            </li>
+            <li>
+                <h3>Cloud Engineer at Oracle</h3>
+                <p>Completed - Certificate Available</p>
+            </li>
+        </ul>
+    </div>
+    <div class="nav-bar">
+        <a onclick="showTab('jobs')" class="active">Jobs</a>
+        <a onclick="showTab('completed')">Completed Jobs</a>
+        <a onclick="showTab('profile')">Profile</a>
+    </div>
+    <div id="profile" class="profile-container">
+        <div class="profile-card">
+            <div class="profile-pic"></div>
+            <h2 class="profile-name" id="profileName">John Doe</h2>
+            <p class="profile-role">Freelance Developer</p>
+            <div class="profile-info">
+                <p id="profileEmail"><span>Email:</span> johndoe@example.com</p>
+                <p><span>Phone:</span> +1234567890</p>
+                <p><span>Skills:</span> HTML, CSS, JavaScript, React, Node.js</p>
+                <p><span>Completed Projects:</span> 3</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+    
+        const userName = getQueryParam("name");
+        const userEmail = getQueryParam("email");
+    
+        console.log("User Name from URL:", userName);
+        console.log("User Email from URL:", userEmail);
+    
+        if (userName && userEmail) {
+            document.getElementById("profileName").textContent = userName;
+            document.getElementById("profileEmail").textContent = userEmail;
+        } else {
+            console.log("No user found, redirecting to login...");
+            window.location.href = "../login.html"; // Redirect if no user data
+        }
+    
+        function logout() {
+            window.close();
+            window.location.href = "../login.html"; // Logout by redirecting
+        }
+    </script>
+    
+
+</body>
+
+</html>
