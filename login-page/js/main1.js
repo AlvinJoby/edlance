@@ -1,4 +1,4 @@
-import { users } from "./js/credentials.js";
+import { users } from "./credentials.js";
 
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault();
