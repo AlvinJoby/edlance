@@ -10,7 +10,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;500&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Slab:wght@700&family=Open+Sans:ital,wght@1,400&display=swap');
-    
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -19,7 +19,7 @@
             color: #333;
             scroll-behavior: smooth;
         }
-    
+
         .header {
             background-color: #ffffff;
             padding: 15px 20px;
@@ -35,14 +35,58 @@
             align-items: center;
             justify-content: space-between;
         }
-    
+
+        .click-me-link {
+            text-decoration: none;
+        }
+
+        .click-me-btn {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 2px solid #38d39f;
+            border-radius: 30px;
+            padding: 6px 14px;
+            gap: 8px;
+            box-shadow: 0 0 8px #38d39f40;
+            transition: all 0.3s ease;
+            margin-right: 24px; 
+        }
+
+        .click-me-btn:hover {
+            background: #38d39f;
+            color: white;
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 0 16px #38d39faa;
+        }
+
+        .icon {
+            font-family: monospace;
+            font-size: 20px;
+            color: #38d39f;
+            transition: color 0.3s;
+        }
+
+        .label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #38d39f;
+            transition: color 0.3s;
+        }
+
+        .click-me-btn:hover .icon,
+        .click-me-btn:hover .label {
+            color: white;
+        }
+
+
         .brand {
             color: #38d39f;
             font-family: 'Poppins', sans-serif;
             font-size: 26px;
             letter-spacing: 0.5px;
         }
-    
+
         .content,
         .profile-container,
         .completed-jobs {
@@ -50,13 +94,13 @@
             padding: 20px;
             display: none;
         }
-    
+
         .content.active,
         .profile-container.active,
         .completed-jobs.active {
             display: block;
         }
-    
+
         .heading {
             text-align: center;
             font-size: 26px;
@@ -64,7 +108,7 @@
             color: #222;
             margin-bottom: 25px;
         }
-    
+
         .job-list {
             list-style: none;
             padding: 0;
@@ -72,7 +116,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
-    
+
         .job-list li {
             background: #ffffff;
             padding: 20px;
@@ -81,19 +125,19 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-    
+
         .job-list li:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
         }
-    
+
         .job-list li h3 {
             font-family: 'Montserrat', sans-serif;
             font-size: 20px;
             font-weight: bold;
             margin: 0 0 8px 0;
         }
-    
+
         .job-list li p {
             font-family: 'Open Sans', sans-serif;
             font-size: 15px;
@@ -101,16 +145,16 @@
             color: #555;
             margin: 0;
         }
-    
+
         .job-list li a {
             text-decoration: none;
             color: #333;
         }
-    
+
         .job-list li a:hover {
             color: #38d39f;
         }
-    
+
         .nav-bar {
             position: fixed;
             bottom: 0;
@@ -124,7 +168,7 @@
             border-top-right-radius: 15px;
             z-index: 1000;
         }
-    
+
         .nav-bar a {
             color: #38d39f;
             text-decoration: none;
@@ -135,13 +179,13 @@
             transition: background 0.3s ease, color 0.3s ease;
             cursor: pointer;
         }
-    
+
         .nav-bar a.active,
         .nav-bar a:hover {
             background: #38d39f;
             color: #ffffff;
         }
-    
+
         .profile-container {
             display: none;
             text-align: center;
@@ -149,7 +193,7 @@
             background: linear-gradient(to bottom, #f5f5f5, #ffffff);
             min-height: 100vh;
         }
-    
+
         .profile-card {
             background: #ffffff;
             padding: 30px 25px;
@@ -160,7 +204,7 @@
             max-width: 400px;
             width: 100%;
         }
-    
+
         .profile-pic {
             width: 130px;
             height: 130px;
@@ -170,12 +214,12 @@
             margin: 0 auto 20px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-    
+
         .profile-pic:hover {
             transform: scale(1.08);
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
         }
-    
+
         .profile-name {
             font-family: 'Poppins', sans-serif;
             font-size: 26px;
@@ -183,19 +227,19 @@
             margin: 10px 0;
             color: #333;
         }
-    
+
         .profile-role {
             font-size: 15px;
             font-family: 'Roboto', sans-serif;
             color: #777;
             margin-bottom: 20px;
         }
-    
+
         .profile-info {
             text-align: left;
             margin-top: 20px;
         }
-    
+
         .profile-info p {
             font-size: 18px;
             font-family: 'Poppins', sans-serif;
@@ -205,45 +249,45 @@
             border-radius: 8px;
             background: #f8f8f8;
         }
-    
+
         .profile-info p span {
             color: #38d39f;
             font-weight: 600;
         }
-    
+
         @media screen and (max-width: 768px) {
             .profile-container {
                 padding: 30px 10px;
             }
-    
+
             .profile-card {
                 width: 100%;
                 padding: 25px 20px;
             }
-    
+
             .profile-name {
                 font-size: 24px;
             }
-    
+
             .profile-info p {
                 font-size: 16px;
                 padding: 10px;
             }
-    
+
             .job-list {
                 grid-template-columns: 1fr;
             }
-    
+
             .heading {
                 font-size: 22px;
             }
-    
+
             .nav-bar a {
                 font-size: 15px;
                 padding: 8px 12px;
             }
         }
-    
+
         .completed-jobs ul {
             list-style: none;
             padding: 0;
@@ -251,7 +295,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
-    
+
         .completed-jobs li {
             background: #ffffff;
             padding: 20px;
@@ -260,19 +304,19 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-    
+
         .completed-jobs li:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
         }
-    
+
         .completed-jobs h3 {
             font-family: 'Montserrat', sans-serif;
             font-size: 20px;
             margin-bottom: 8px;
         }
     </style>
-    
+
     <script>
         function showTab(tabName) {
             document.querySelectorAll('.content, .profile-container, .completed-jobs').forEach(el => el.classList.remove('active'));
@@ -284,184 +328,213 @@
 </head>
 
 <body onload="showTab('jobs')">
-    <div class="header"><span class="brand">EDLance</span></div>
+    <div class="header">
+        <span class="brand">EDLance</span>
+        <a href="https://alvinjoby.com" target="_blank" class="click-me-link" title="Wanna cliq me?">
+            <div class="click-me-btn">
+                <span class="icon">&lt;/&gt;</span>
+                <span class="label">🙃 sup?</span>
+            </div>
+        </a>
+    </div>
+
     <div id="jobs" class="content active">
         <h2 class="heading">Works Available at Your Campus</h2>
         <ul class="job-list">
             <li>
                 <h3>
-                    <a href="description.html?title=Content Writer for College Blog&company=Anjali (CSE)&desc=Write weekly articles for the college tech blog.&requirements=Good command of English and basic research skills.&location=Remote&salary=₹500 per article&overview=Anjali from CSE is looking for a creative writer to contribute blog posts on tech topics, campus events, and student stories.&responsibilities=1. Write engaging articles. 2. Submit work on time. 3. Coordinate for revisions if needed.&qualifications=1. Strong English writing skills. 2. Interest in tech and student life. 3. Ability to meet deadlines.&benefits=1. Certificate of appreciation. 2. Recognition in blog. 3. Paid per article.">
+                    <a
+                        href="description.html?title=Content Writer for College Blog&company=Anjali (CSE)&desc=Write weekly articles for the college tech blog.&requirements=Good command of English and basic research skills.&location=Remote&salary=₹500 per article&overview=Anjali from CSE is looking for a creative writer to contribute blog posts on tech topics, campus events, and student stories.&responsibilities=1. Write engaging articles. 2. Submit work on time. 3. Coordinate for revisions if needed.&qualifications=1. Strong English writing skills. 2. Interest in tech and student life. 3. Ability to meet deadlines.&benefits=1. Certificate of appreciation. 2. Recognition in blog. 3. Paid per article.">
                         Content Writer for College Blog
                     </a>
                 </h3>
                 <p>Write weekly articles for the college tech blog.</p>
             </li>
-        
+
             <li>
                 <h3>
-                    <a href="description.html?title=Poster Designer for Event Promotion&company=Rahul (CG)&desc=Design posters and flyers for college events.&requirements=Experience with Photoshop or Canva.&location=On-Campus&salary=₹300 per design&overview=Rahul from CG needs a designer to create eye-catching posters for department events and college fests.&responsibilities=1. Design digital/print posters. 2. Submit designs by deadlines. 3. Collaborate with event coordinators.&qualifications=1. Creativity and design skills. 2. Familiarity with design tools. 3. Good communication.&benefits=1. Flexible deadlines. 2. Opportunity to build a portfolio. 3. Get featured in event promotions.">
+                    <a
+                        href="description.html?title=Poster Designer for Event Promotion&company=Rahul (CG)&desc=Design posters and flyers for college events.&requirements=Experience with Photoshop or Canva.&location=On-Campus&salary=₹300 per design&overview=Rahul from CG needs a designer to create eye-catching posters for department events and college fests.&responsibilities=1. Design digital/print posters. 2. Submit designs by deadlines. 3. Collaborate with event coordinators.&qualifications=1. Creativity and design skills. 2. Familiarity with design tools. 3. Good communication.&benefits=1. Flexible deadlines. 2. Opportunity to build a portfolio. 3. Get featured in event promotions.">
                         Poster Designer for Event Promotion
                     </a>
                 </h3>
                 <p>Design posters and flyers for college events.</p>
             </li>
-        
+
             <li>
                 <h3>
-                    <a href="description.html?title=Webpage Developer for Department Site&company=Sneha (IT)&desc=Help build and maintain a departmental website.&requirements=HTML, CSS, JavaScript knowledge.&location=Remote/On-Campus&salary=₹1000 per project&overview=Sneha from IT is looking for a student to build a clean, responsive website for the IT department's activities and announcements.&responsibilities=1. Develop the frontend layout. 2. Collaborate for content. 3. Ensure mobile responsiveness.&qualifications=1. Knowledge of web dev basics. 2. Past mini-projects or practice pages. 3. Able to work in short timelines.&benefits=1. Website credit mention. 2. Real-world experience. 3. Certificate and payment.">
+                    <a
+                        href="description.html?title=Webpage Developer for Department Site&company=Sneha (IT)&desc=Help build and maintain a departmental website.&requirements=HTML, CSS, JavaScript knowledge.&location=Remote/On-Campus&salary=₹1000 per project&overview=Sneha from IT is looking for a student to build a clean, responsive website for the IT department's activities and announcements.&responsibilities=1. Develop the frontend layout. 2. Collaborate for content. 3. Ensure mobile responsiveness.&qualifications=1. Knowledge of web dev basics. 2. Past mini-projects or practice pages. 3. Able to work in short timelines.&benefits=1. Website credit mention. 2. Real-world experience. 3. Certificate and payment.">
                         Webpage Developer for Department Site
                     </a>
                 </h3>
                 <p>Help build and maintain a departmental website.</p>
             </li>
-        
+
             <li>
                 <h3>
-                    <a href="description.html?title=Photography for Campus Events&company=Nikhil (AD)&desc=Capture and edit photos of college events.&requirements=Basic DSLR handling and photo editing.&location=On-Campus&salary=₹200 per event&overview=Nikhil from AD wants someone to click and edit photos for cultural and tech events across the campus.&responsibilities=1. Take event photos. 2. Edit for clarity and style. 3. Deliver within 2 days.&qualifications=1. Own a camera or phone with good quality. 2. Some editing experience. 3. Interest in event coverage.&benefits=1. Photo credits. 2. Portfolio material. 3. Paid per event.">
+                    <a
+                        href="description.html?title=Photography for Campus Events&company=Nikhil (AD)&desc=Capture and edit photos of college events.&requirements=Basic DSLR handling and photo editing.&location=On-Campus&salary=₹200 per event&overview=Nikhil from AD wants someone to click and edit photos for cultural and tech events across the campus.&responsibilities=1. Take event photos. 2. Edit for clarity and style. 3. Deliver within 2 days.&qualifications=1. Own a camera or phone with good quality. 2. Some editing experience. 3. Interest in event coverage.&benefits=1. Photo credits. 2. Portfolio material. 3. Paid per event.">
                         Photography for Campus Events
                     </a>
                 </h3>
                 <p>Capture and edit photos of college events.</p>
             </li>
-        
+
             <li>
                 <h3>
-                    <a href="description.html?title=Resume Building Assistance&company=Arya (CSE)&desc=Help juniors build resumes for internships.&requirements=Knowledge of resume tools and formats.&location=Remote&salary=₹150 per resume&overview=Arya from CSE is helping juniors apply for internships and needs support in resume formatting and writing.&responsibilities=1. Format student resumes. 2. Suggest improvements. 3. Customize for different roles.&qualifications=1. Good writing/editing skills. 2. Knowledge of resume structure. 3. Friendly communication.&benefits=1. Earn for each resume. 2. Build your mentoring skills. 3. Flexible timings.">
+                    <a
+                        href="description.html?title=Resume Building Assistance&company=Arya (CSE)&desc=Help juniors build resumes for internships.&requirements=Knowledge of resume tools and formats.&location=Remote&salary=₹150 per resume&overview=Arya from CSE is helping juniors apply for internships and needs support in resume formatting and writing.&responsibilities=1. Format student resumes. 2. Suggest improvements. 3. Customize for different roles.&qualifications=1. Good writing/editing skills. 2. Knowledge of resume structure. 3. Friendly communication.&benefits=1. Earn for each resume. 2. Build your mentoring skills. 3. Flexible timings.">
                         Resume Building Assistance
                     </a>
                 </h3>
                 <p>Help juniors build resumes for internships.</p>
             </li>
-        
+
             <li>
                 <h3>
-                    <a href="description.html?title=Python Tutoring for Freshers&company=Vishnu (Mech)&desc=Teach Python basics to first-year students.&requirements=Understanding of Python fundamentals.&location=On-Campus&salary=₹200 per session&overview=Vishnu from Mech is organizing weekly sessions for freshers struggling with Python basics.&responsibilities=1. Conduct simple lessons. 2. Clarify basic concepts. 3. Provide practice tasks.&qualifications=1. Proficient in Python. 2. Patience and clarity in teaching. 3. Friendly nature.&benefits=1. Mentorship experience. 2. Flexible timing. 3. Paid per session.">
+                    <a
+                        href="description.html?title=Python Tutoring for Freshers&company=Vishnu (Mech)&desc=Teach Python basics to first-year students.&requirements=Understanding of Python fundamentals.&location=On-Campus&salary=₹200 per session&overview=Vishnu from Mech is organizing weekly sessions for freshers struggling with Python basics.&responsibilities=1. Conduct simple lessons. 2. Clarify basic concepts. 3. Provide practice tasks.&qualifications=1. Proficient in Python. 2. Patience and clarity in teaching. 3. Friendly nature.&benefits=1. Mentorship experience. 2. Flexible timing. 3. Paid per session.">
                         Python Tutoring for Freshers
                     </a>
                 </h3>
                 <p>Teach Python basics to first-year students.</p>
             </li>
-        
+
             <li>
                 <h3>
-                    <a href="description.html?title=VJCET Event Photographer Assistant&company=Arjun (EEE)&desc=Support lead photographer during college events.&requirements=Basic knowledge of framing and camera handling.&location=On-Campus&salary=₹150 per event&overview=Arjun is building a media team at VJCET and needs an assistant for event photography.&responsibilities=1. Help with camera setup. 2. Capture backup shots. 3. Organize media files.&qualifications=1. Eye for moments. 2. Interest in photography. 3. Team player.&benefits=1. Photo credits. 2. Learning opportunity. 3. Paid work.">
+                    <a
+                        href="description.html?title=VJCET Event Photographer Assistant&company=Arjun (EEE)&desc=Support lead photographer during college events.&requirements=Basic knowledge of framing and camera handling.&location=On-Campus&salary=₹150 per event&overview=Arjun is building a media team at VJCET and needs an assistant for event photography.&responsibilities=1. Help with camera setup. 2. Capture backup shots. 3. Organize media files.&qualifications=1. Eye for moments. 2. Interest in photography. 3. Team player.&benefits=1. Photo credits. 2. Learning opportunity. 3. Paid work.">
                         VJCET Event Photographer Assistant
                     </a>
                 </h3>
                 <p>Support lead photographer during college events.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Quiz Master for Tech Fest at VJCET&company=Sandra (CSE)&desc=Host and create questions for a tech quiz event.&requirements=Public speaking and general tech knowledge.&location=On-Campus&salary=₹500 per event&overview=VJCET’s tech fest needs a confident quiz master to engage the audience and run a smooth show.&responsibilities=1. Create quiz sets. 2. Host event. 3. Coordinate with fest team.&qualifications=1. Presentation skills. 2. Creative thinking. 3. Tech interest.&benefits=1. Event highlight. 2. Experience. 3. Paid role.">
+                    <a
+                        href="description.html?title=Quiz Master for Tech Fest at VJCET&company=Sandra (CSE)&desc=Host and create questions for a tech quiz event.&requirements=Public speaking and general tech knowledge.&location=On-Campus&salary=₹500 per event&overview=VJCET’s tech fest needs a confident quiz master to engage the audience and run a smooth show.&responsibilities=1. Create quiz sets. 2. Host event. 3. Coordinate with fest team.&qualifications=1. Presentation skills. 2. Creative thinking. 3. Tech interest.&benefits=1. Event highlight. 2. Experience. 3. Paid role.">
                         Quiz Master for Tech Fest at VJCET
                     </a>
                 </h3>
                 <p>Host and create questions for a tech quiz event.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Social Media Manager for VJCET Club&company=Vivek (Mech)&desc=Manage Instagram and WhatsApp updates for a club.&requirements=Social media familiarity and creativity.&location=Remote&salary=₹300 per month&overview=Vivek is looking for someone to post timely updates and event promos for his VJCET club.&responsibilities=1. Design posts. 2. Schedule content. 3. Engage with audience.&qualifications=1. Creativity. 2. Consistency. 3. Good communication.&benefits=1. Wide visibility. 2. Monthly pay. 3. Content freedom.">
+                    <a
+                        href="description.html?title=Social Media Manager for VJCET Club&company=Vivek (Mech)&desc=Manage Instagram and WhatsApp updates for a club.&requirements=Social media familiarity and creativity.&location=Remote&salary=₹300 per month&overview=Vivek is looking for someone to post timely updates and event promos for his VJCET club.&responsibilities=1. Design posts. 2. Schedule content. 3. Engage with audience.&qualifications=1. Creativity. 2. Consistency. 3. Good communication.&benefits=1. Wide visibility. 2. Monthly pay. 3. Content freedom.">
                         Social Media Manager for VJCET Club
                     </a>
                 </h3>
                 <p>Manage Instagram and WhatsApp updates for a club.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Technical Blog Writer - VJCET Innovations&company=Fathima (ECE)&desc=Write blog articles featuring student projects at VJCET.&requirements=Writing and tech understanding.&location=Remote&salary=₹400 per article&overview=Fathima is launching a blog to highlight tech innovations at VJCET.&responsibilities=1. Interview students. 2. Write project overviews. 3. Format neatly.&qualifications=1. Writing skills. 2. Basic technical language. 3. Research.&benefits=1. Recognition. 2. Blog credit. 3. Paid work.">
+                    <a
+                        href="description.html?title=Technical Blog Writer - VJCET Innovations&company=Fathima (ECE)&desc=Write blog articles featuring student projects at VJCET.&requirements=Writing and tech understanding.&location=Remote&salary=₹400 per article&overview=Fathima is launching a blog to highlight tech innovations at VJCET.&responsibilities=1. Interview students. 2. Write project overviews. 3. Format neatly.&qualifications=1. Writing skills. 2. Basic technical language. 3. Research.&benefits=1. Recognition. 2. Blog credit. 3. Paid work.">
                         Technical Blog Writer - VJCET Innovations
                     </a>
                 </h3>
                 <p>Write blog articles featuring student projects at VJCET.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Anchor for VJCET Cultural Night&company=Joel (AD)&desc=Host the cultural evening and engage audience.&requirements=Stage presence and speaking skills.&location=On-Campus&salary=₹600 for the night&overview=Joel needs a confident student to emcee the VJCET cultural night.&responsibilities=1. Host the show. 2. Announce performers. 3. Keep energy up.&qualifications=1. Confident speaker. 2. Good timing. 3. Fun personality.&benefits=1. Huge exposure. 2. Recognition. 3. Paid event.">
+                    <a
+                        href="description.html?title=Anchor for VJCET Cultural Night&company=Joel (AD)&desc=Host the cultural evening and engage audience.&requirements=Stage presence and speaking skills.&location=On-Campus&salary=₹600 for the night&overview=Joel needs a confident student to emcee the VJCET cultural night.&responsibilities=1. Host the show. 2. Announce performers. 3. Keep energy up.&qualifications=1. Confident speaker. 2. Good timing. 3. Fun personality.&benefits=1. Huge exposure. 2. Recognition. 3. Paid event.">
                         Anchor for VJCET Cultural Night
                     </a>
                 </h3>
                 <p>Host the cultural evening and engage audience.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Database Organizer for Project Archives&company=Anand (IT)&desc=Create a digital archive of past student projects.&requirements=Excel or DBMS knowledge.&location=Remote/On-Campus&salary=₹500 per batch of 20 projects&overview=Anand is compiling final year projects from VJCET for easy student access.&responsibilities=1. Collect data. 2. Enter in DB. 3. Tag by category.&qualifications=1. Attention to detail. 2. Familiarity with DB. 3. Organized.&benefits=1. One-time task. 2. Paid batch-wise. 3. CV boost.">
+                    <a
+                        href="description.html?title=Database Organizer for Project Archives&company=Anand (IT)&desc=Create a digital archive of past student projects.&requirements=Excel or DBMS knowledge.&location=Remote/On-Campus&salary=₹500 per batch of 20 projects&overview=Anand is compiling final year projects from VJCET for easy student access.&responsibilities=1. Collect data. 2. Enter in DB. 3. Tag by category.&qualifications=1. Attention to detail. 2. Familiarity with DB. 3. Organized.&benefits=1. One-time task. 2. Paid batch-wise. 3. CV boost.">
                         Database Organizer for Project Archives
                     </a>
                 </h3>
                 <p>Create a digital archive of past student projects.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Mentor for First-Year Coding Bootcamp&company=Nived (CSE)&desc=Guide juniors through basic coding exercises.&requirements=Basic programming skills.&location=Remote/On-Campus&salary=₹200 per session&overview=Nived is running weekend sessions to help freshers at VJCET start coding.&responsibilities=1. Assist in tasks. 2. Explain logic. 3. Share resources.&qualifications=1. Knowledgeable. 2. Patient. 3. Friendly.&benefits=1. Mentorship. 2. Paid sessions. 3. Build rep.">
+                    <a
+                        href="description.html?title=Mentor for First-Year Coding Bootcamp&company=Nived (CSE)&desc=Guide juniors through basic coding exercises.&requirements=Basic programming skills.&location=Remote/On-Campus&salary=₹200 per session&overview=Nived is running weekend sessions to help freshers at VJCET start coding.&responsibilities=1. Assist in tasks. 2. Explain logic. 3. Share resources.&qualifications=1. Knowledgeable. 2. Patient. 3. Friendly.&benefits=1. Mentorship. 2. Paid sessions. 3. Build rep.">
                         Mentor for First-Year Coding Bootcamp
                     </a>
                 </h3>
                 <p>Guide juniors through basic coding exercises.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Event Scheduler App Designer (VJCET Projects)&company=Ritika (Civil)&desc=Design UI for a student project event planner app.&requirements=UI design experience.&location=Remote&salary=₹700 project-based&overview=Ritika is building a web app to manage student events at VJCET and needs help with design mockups.&responsibilities=1. Design UI. 2. Use Figma or Canva. 3. Submit screens.&qualifications=1. Creativity. 2. UX familiarity. 3. Detail focus.&benefits=1. App credit. 2. Practical work. 3. Payment after delivery.">
+                    <a
+                        href="description.html?title=Event Scheduler App Designer (VJCET Projects)&company=Ritika (Civil)&desc=Design UI for a student project event planner app.&requirements=UI design experience.&location=Remote&salary=₹700 project-based&overview=Ritika is building a web app to manage student events at VJCET and needs help with design mockups.&responsibilities=1. Design UI. 2. Use Figma or Canva. 3. Submit screens.&qualifications=1. Creativity. 2. UX familiarity. 3. Detail focus.&benefits=1. App credit. 2. Practical work. 3. Payment after delivery.">
                         Event Scheduler App Designer (VJCET Projects)
                     </a>
                 </h3>
                 <p>Design UI for a student project event planner app.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Science Fair Video Narrator&company=Dev (EEE)&desc=Narrate short clips for a VJCET science fair highlight video.&requirements=Good English and voice clarity.&location=Remote&salary=₹200 per video&overview=Dev is compiling footage and needs a narrator for smooth storytelling in the science fair video.&responsibilities=1. Read script. 2. Match tone. 3. Submit audio files.&qualifications=1. Clear voice. 2. Enthusiasm. 3. Mic access.&benefits=1. Voice credit. 2. Paid. 3. Creative fun.">
+                    <a
+                        href="description.html?title=Science Fair Video Narrator&company=Dev (EEE)&desc=Narrate short clips for a VJCET science fair highlight video.&requirements=Good English and voice clarity.&location=Remote&salary=₹200 per video&overview=Dev is compiling footage and needs a narrator for smooth storytelling in the science fair video.&responsibilities=1. Read script. 2. Match tone. 3. Submit audio files.&qualifications=1. Clear voice. 2. Enthusiasm. 3. Mic access.&benefits=1. Voice credit. 2. Paid. 3. Creative fun.">
                         Science Fair Video Narrator
                     </a>
                 </h3>
                 <p>Narrate short clips for a VJCET science fair highlight video.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Design Judge for Inter-Department Poster Contest&company=Arya (CG)&desc=Review and judge design submissions from students.&requirements=Good design sense.&location=Remote&salary=₹250 honorarium&overview=Arya is organizing a poster contest across VJCET and needs a student judge.&responsibilities=1. Review designs. 2. Score fairly. 3. Submit feedback.&qualifications=1. Eye for detail. 2. Fair mindset. 3. Creativity.&benefits=1. Judge mention. 2. Event perks. 3. Paid role.">
+                    <a
+                        href="description.html?title=Design Judge for Inter-Department Poster Contest&company=Arya (CG)&desc=Review and judge design submissions from students.&requirements=Good design sense.&location=Remote&salary=₹250 honorarium&overview=Arya is organizing a poster contest across VJCET and needs a student judge.&responsibilities=1. Review designs. 2. Score fairly. 3. Submit feedback.&qualifications=1. Eye for detail. 2. Fair mindset. 3. Creativity.&benefits=1. Judge mention. 2. Event perks. 3. Paid role.">
                         Design Judge for Inter-Department Poster Contest
                     </a>
                 </h3>
                 <p>Review and judge design submissions from students.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Video Editor for College Projects&company=Devika (Civil)&desc=Edit project and event videos with transitions and effects.&requirements=Basic editing software knowledge.&location=Remote&salary=₹400 per video&overview=Devika from Civil is compiling a video series for a project presentation and needs help in editing and trimming clips professionally.&responsibilities=1. Edit raw footage. 2. Add titles, transitions, and audio. 3. Deliver final version on time.&qualifications=1. Familiarity with video editing tools. 2. Creative mindset. 3. Attention to detail.&benefits=1. Credited in videos. 2. Practical editing experience. 3. Paid per task.">
+                    <a
+                        href="description.html?title=Video Editor for College Projects&company=Devika (Civil)&desc=Edit project and event videos with transitions and effects.&requirements=Basic editing software knowledge.&location=Remote&salary=₹400 per video&overview=Devika from Civil is compiling a video series for a project presentation and needs help in editing and trimming clips professionally.&responsibilities=1. Edit raw footage. 2. Add titles, transitions, and audio. 3. Deliver final version on time.&qualifications=1. Familiarity with video editing tools. 2. Creative mindset. 3. Attention to detail.&benefits=1. Credited in videos. 2. Practical editing experience. 3. Paid per task.">
                         Video Editor for College Projects
                     </a>
                 </h3>
                 <p>Edit project and event videos with transitions and effects.</p>
             </li>
-        
+
             <li>
                 <h3>
-                    <a href="description.html?title=Excel Automation for Club Finance&company=Ravi (IT)&desc=Create an Excel system to track budgets and expenses.&requirements=Excel formulas and basic scripting.&location=Remote&salary=₹300 for project&overview=Ravi from IT needs an Excel dashboard to manage finances of a student club, including budget planning and tracking expenses.&responsibilities=1. Create automated sheets. 2. Include charts and filters. 3. Deliver and explain usage.&qualifications=1. Excel knowledge. 2. Some VBA or scripting a plus. 3. Organized mindset.&benefits=1. Feature in club reports. 2. Expand your skill set. 3. Get paid.">
+                    <a
+                        href="description.html?title=Excel Automation for Club Finance&company=Ravi (IT)&desc=Create an Excel system to track budgets and expenses.&requirements=Excel formulas and basic scripting.&location=Remote&salary=₹300 for project&overview=Ravi from IT needs an Excel dashboard to manage finances of a student club, including budget planning and tracking expenses.&responsibilities=1. Create automated sheets. 2. Include charts and filters. 3. Deliver and explain usage.&qualifications=1. Excel knowledge. 2. Some VBA or scripting a plus. 3. Organized mindset.&benefits=1. Feature in club reports. 2. Expand your skill set. 3. Get paid.">
                         Excel Automation for Club Finance
                     </a>
                 </h3>
                 <p>Create an Excel system to track budgets and expenses.</p>
             </li>
-        
+
             <li>
                 <h3>
-                    <a href="description.html?title=Voice Over for Presentation Videos&company=Meera (CG)&desc=Provide professional voice-over for student videos.&requirements=Clear voice and recording ability.&location=Remote&salary=₹200 per video&overview=Meera from CG is making presentation videos and needs a clear, friendly voice to narrate content.&responsibilities=1. Record and edit voice-over. 2. Match script timing. 3. Send in mp3/mp4 format.&qualifications=1. Clear pronunciation. 2. Mic and recording setup. 3. Ability to match tone.&benefits=1. Credit in videos. 2. Voice acting experience. 3. Paid gig.">
+                    <a
+                        href="description.html?title=Voice Over for Presentation Videos&company=Meera (CG)&desc=Provide professional voice-over for student videos.&requirements=Clear voice and recording ability.&location=Remote&salary=₹200 per video&overview=Meera from CG is making presentation videos and needs a clear, friendly voice to narrate content.&responsibilities=1. Record and edit voice-over. 2. Match script timing. 3. Send in mp3/mp4 format.&qualifications=1. Clear pronunciation. 2. Mic and recording setup. 3. Ability to match tone.&benefits=1. Credit in videos. 2. Voice acting experience. 3. Paid gig.">
                         Voice Over for Presentation Videos
                     </a>
                 </h3>
                 <p>Provide professional voice-over for student videos.</p>
             </li>
-        
+
             <li>
                 <h3>
-                    <a href="description.html?title=Canva Templates for Class Notes&company=Jithin (AD)&desc=Design attractive note templates in Canva.&requirements=Canva knowledge and creativity.&location=Remote&salary=₹50 per template&overview=Jithin from AD wants a set of beautiful and readable templates for digital note-taking to be shared among peers.&responsibilities=1. Design Canva templates. 2. Make editable versions. 3. Share final download link.&qualifications=1. Good eye for design. 2. Experience using Canva. 3. Deliver neat and clean layouts.&benefits=1. Showcase your designs. 2. Paid for each set. 3. Flexible hours.">
+                    <a
+                        href="description.html?title=Canva Templates for Class Notes&company=Jithin (AD)&desc=Design attractive note templates in Canva.&requirements=Canva knowledge and creativity.&location=Remote&salary=₹50 per template&overview=Jithin from AD wants a set of beautiful and readable templates for digital note-taking to be shared among peers.&responsibilities=1. Design Canva templates. 2. Make editable versions. 3. Share final download link.&qualifications=1. Good eye for design. 2. Experience using Canva. 3. Deliver neat and clean layouts.&benefits=1. Showcase your designs. 2. Paid for each set. 3. Flexible hours.">
                         Canva Templates for Class Notes
                     </a>
                 </h3>
@@ -469,88 +542,98 @@
             </li>
             <li>
                 <h3>
-                    <a href="description.html?title=App Icon Designer for Student Startups&company=Kiran (EEE)&desc=Design minimal app icons for upcoming student projects.&requirements=Experience with vector design tools.&location=Remote&salary=₹250 per icon&overview=Kiran from EEE is launching a student app and needs sleek icon designs for branding.&responsibilities=1. Design unique app icons. 2. Provide PNG and SVG formats. 3. Follow brand guidelines.&qualifications=1. Icon design experience. 2. Portfolio of past work. 3. Reliable communication.&benefits=1. Credit in app. 2. Paid per task. 3. Remote work.">
+                    <a
+                        href="description.html?title=App Icon Designer for Student Startups&company=Kiran (EEE)&desc=Design minimal app icons for upcoming student projects.&requirements=Experience with vector design tools.&location=Remote&salary=₹250 per icon&overview=Kiran from EEE is launching a student app and needs sleek icon designs for branding.&responsibilities=1. Design unique app icons. 2. Provide PNG and SVG formats. 3. Follow brand guidelines.&qualifications=1. Icon design experience. 2. Portfolio of past work. 3. Reliable communication.&benefits=1. Credit in app. 2. Paid per task. 3. Remote work.">
                         App Icon Designer for Student Startups
                     </a>
                 </h3>
                 <p>Design minimal app icons for upcoming student projects.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Social Media Manager for Clubs&company=Neha (ECE)&desc=Manage Instagram and LinkedIn for a student club.&requirements=Knowledge of trends and social media tools.&location=Remote&salary=₹400 per month&overview=Neha from ECE wants someone to regularly post and interact on the club’s social accounts.&responsibilities=1. Schedule posts. 2. Engage with audience. 3. Report performance.&qualifications=1. Social media savvy. 2. Creative content ideas. 3. Timely posting.&benefits=1. Visibility. 2. Long-term work. 3. Paid monthly.">
+                    <a
+                        href="description.html?title=Social Media Manager for Clubs&company=Neha (ECE)&desc=Manage Instagram and LinkedIn for a student club.&requirements=Knowledge of trends and social media tools.&location=Remote&salary=₹400 per month&overview=Neha from ECE wants someone to regularly post and interact on the club’s social accounts.&responsibilities=1. Schedule posts. 2. Engage with audience. 3. Report performance.&qualifications=1. Social media savvy. 2. Creative content ideas. 3. Timely posting.&benefits=1. Visibility. 2. Long-term work. 3. Paid monthly.">
                         Social Media Manager for Clubs
                     </a>
                 </h3>
                 <p>Manage Instagram and LinkedIn for a student club.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Survey Form Developer&company=Amal (Mech)&desc=Create Google Forms for student research.&requirements=Basic Google Forms knowledge.&location=Remote&salary=₹50 per form&overview=Amal from Mech needs help creating structured survey forms for data collection.&responsibilities=1. Design user-friendly forms. 2. Ensure data validity. 3. Share response links.&qualifications=1. Organized approach. 2. Attention to detail. 3. Basic Google tools knowledge.&benefits=1. Easy work. 2. Repeat tasks. 3. Paid per form.">
+                    <a
+                        href="description.html?title=Survey Form Developer&company=Amal (Mech)&desc=Create Google Forms for student research.&requirements=Basic Google Forms knowledge.&location=Remote&salary=₹50 per form&overview=Amal from Mech needs help creating structured survey forms for data collection.&responsibilities=1. Design user-friendly forms. 2. Ensure data validity. 3. Share response links.&qualifications=1. Organized approach. 2. Attention to detail. 3. Basic Google tools knowledge.&benefits=1. Easy work. 2. Repeat tasks. 3. Paid per form.">
                         Survey Form Developer
                     </a>
                 </h3>
                 <p>Create Google Forms for student research.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Event Host for College Fests&company=Sara (CSE)&desc=Anchor college tech/cultural events with energy.&requirements=Good stage presence and speaking skills.&location=On-Campus&salary=₹500 per event&overview=Sara from CSE is organizing tech and cultural events and needs a lively host.&responsibilities=1. Present on stage. 2. Coordinate with organizers. 3. Maintain energy and timing.&qualifications=1. Confident speaker. 2. Team player. 3. Previous experience is a plus.&benefits=1. Networking. 2. Certificate. 3. Event fame.">
+                    <a
+                        href="description.html?title=Event Host for College Fests&company=Sara (CSE)&desc=Anchor college tech/cultural events with energy.&requirements=Good stage presence and speaking skills.&location=On-Campus&salary=₹500 per event&overview=Sara from CSE is organizing tech and cultural events and needs a lively host.&responsibilities=1. Present on stage. 2. Coordinate with organizers. 3. Maintain energy and timing.&qualifications=1. Confident speaker. 2. Team player. 3. Previous experience is a plus.&benefits=1. Networking. 2. Certificate. 3. Event fame.">
                         Event Host for College Fests
                     </a>
                 </h3>
                 <p>Anchor college tech/cultural events with energy.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Quiz Creator for Tech Events&company=Manoj (IT)&desc=Design tech quizzes for online/offline competitions.&requirements=Knowledge of tech topics.&location=Remote/On-Campus&salary=₹300 per quiz&overview=Manoj from IT is planning a tech quiz competition and needs help curating the questions.&responsibilities=1. Prepare quiz sets. 2. Include MCQs and fun facts. 3. Test for accuracy.&qualifications=1. Interest in quizzing. 2. Clear knowledge. 3. Fast turnaround.&benefits=1. Event mention. 2. Fun gig. 3. Paid work.">
+                    <a
+                        href="description.html?title=Quiz Creator for Tech Events&company=Manoj (IT)&desc=Design tech quizzes for online/offline competitions.&requirements=Knowledge of tech topics.&location=Remote/On-Campus&salary=₹300 per quiz&overview=Manoj from IT is planning a tech quiz competition and needs help curating the questions.&responsibilities=1. Prepare quiz sets. 2. Include MCQs and fun facts. 3. Test for accuracy.&qualifications=1. Interest in quizzing. 2. Clear knowledge. 3. Fast turnaround.&benefits=1. Event mention. 2. Fun gig. 3. Paid work.">
                         Quiz Creator for Tech Events
                     </a>
                 </h3>
                 <p>Design tech quizzes for online/offline competitions.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Internship Guide Compiler&company=Divya (ECE)&desc=Collect and compile internship experiences of seniors.&requirements=Google Docs and editing skills.&location=Remote&salary=₹500 for the whole project&overview=Divya from ECE is building an internship guidebook for juniors.&responsibilities=1. Collect experiences. 2. Edit and format. 3. Submit as a compiled document.&qualifications=1. Organized. 2. Writing/editing skills. 3. Self-motivated.&benefits=1. Name in credits. 2. Great learning. 3. Flat payment.">
+                    <a
+                        href="description.html?title=Internship Guide Compiler&company=Divya (ECE)&desc=Collect and compile internship experiences of seniors.&requirements=Google Docs and editing skills.&location=Remote&salary=₹500 for the whole project&overview=Divya from ECE is building an internship guidebook for juniors.&responsibilities=1. Collect experiences. 2. Edit and format. 3. Submit as a compiled document.&qualifications=1. Organized. 2. Writing/editing skills. 3. Self-motivated.&benefits=1. Name in credits. 2. Great learning. 3. Flat payment.">
                         Internship Guide Compiler
                     </a>
                 </h3>
                 <p>Collect and compile internship experiences of seniors.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Scriptwriter for College Videos&company=Abhay (CG)&desc=Write video scripts for college promotional content.&requirements=Scriptwriting or storytelling skills.&location=Remote&salary=₹200 per script&overview=Abhay from CG is making college promo videos and needs scripts that tell stories.&responsibilities=1. Write short scripts. 2. Match tone to target audience. 3. Revise if needed.&qualifications=1. Creative writing skills. 2. Clear grammar. 3. Team-friendly.&benefits=1. Credit in videos. 2. Showcase your work. 3. Paid gig.">
+                    <a
+                        href="description.html?title=Scriptwriter for College Videos&company=Abhay (CG)&desc=Write video scripts for college promotional content.&requirements=Scriptwriting or storytelling skills.&location=Remote&salary=₹200 per script&overview=Abhay from CG is making college promo videos and needs scripts that tell stories.&responsibilities=1. Write short scripts. 2. Match tone to target audience. 3. Revise if needed.&qualifications=1. Creative writing skills. 2. Clear grammar. 3. Team-friendly.&benefits=1. Credit in videos. 2. Showcase your work. 3. Paid gig.">
                         Scriptwriter for College Videos
                     </a>
                 </h3>
                 <p>Write video scripts for college promotional content.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Brochure Designer for Seminars&company=Ritika (Civil)&desc=Design a visually appealing seminar brochure.&requirements=Canva/InDesign knowledge.&location=Remote&salary=₹250 per brochure&overview=Ritika from Civil needs brochures for a series of seminars.&responsibilities=1. Design layout. 2. Include speaker and agenda info. 3. Deliver print-ready file.&qualifications=1. Eye for layout. 2. Good with tools. 3. Reliable.&benefits=1. Portfolio content. 2. Recognition. 3. Paid task.">
+                    <a
+                        href="description.html?title=Brochure Designer for Seminars&company=Ritika (Civil)&desc=Design a visually appealing seminar brochure.&requirements=Canva/InDesign knowledge.&location=Remote&salary=₹250 per brochure&overview=Ritika from Civil needs brochures for a series of seminars.&responsibilities=1. Design layout. 2. Include speaker and agenda info. 3. Deliver print-ready file.&qualifications=1. Eye for layout. 2. Good with tools. 3. Reliable.&benefits=1. Portfolio content. 2. Recognition. 3. Paid task.">
                         Brochure Designer for Seminars
                     </a>
                 </h3>
                 <p>Design a visually appealing seminar brochure.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Workshop Assistant for Robotics&company=Arjun (Mech)&desc=Help coordinate and manage robotics workshops.&requirements=Basic robotics knowledge.&location=On-Campus&salary=₹300 per workshop&overview=Arjun from Mech is conducting robotics training and needs volunteers.&responsibilities=1. Setup equipment. 2. Assist during sessions. 3. Help participants.&qualifications=1. Interest in robotics. 2. Friendly approach. 3. Hands-on skills.&benefits=1. Robotics exposure. 2. Certificate. 3. Paid gig.">
+                    <a
+                        href="description.html?title=Workshop Assistant for Robotics&company=Arjun (Mech)&desc=Help coordinate and manage robotics workshops.&requirements=Basic robotics knowledge.&location=On-Campus&salary=₹300 per workshop&overview=Arjun from Mech is conducting robotics training and needs volunteers.&responsibilities=1. Setup equipment. 2. Assist during sessions. 3. Help participants.&qualifications=1. Interest in robotics. 2. Friendly approach. 3. Hands-on skills.&benefits=1. Robotics exposure. 2. Certificate. 3. Paid gig.">
                         Workshop Assistant for Robotics
                     </a>
                 </h3>
                 <p>Help coordinate and manage robotics workshops.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Blog Reviewer and Editor&company=Lavanya (CSE)&desc=Review and improve student blog posts before publishing.&requirements=Good grammar and editing sense.&location=Remote&salary=₹100 per article&overview=Lavanya from CSE manages a student blog and wants help reviewing content before publishing.&responsibilities=1. Read articles. 2. Correct grammar. 3. Suggest improvements.&qualifications=1. Fluent English. 2. Sharp eye for errors. 3. Responsible.&benefits=1. Editor credit. 2. Remote. 3. Paid per task.">
+                    <a
+                        href="description.html?title=Blog Reviewer and Editor&company=Lavanya (CSE)&desc=Review and improve student blog posts before publishing.&requirements=Good grammar and editing sense.&location=Remote&salary=₹100 per article&overview=Lavanya from CSE manages a student blog and wants help reviewing content before publishing.&responsibilities=1. Read articles. 2. Correct grammar. 3. Suggest improvements.&qualifications=1. Fluent English. 2. Sharp eye for errors. 3. Responsible.&benefits=1. Editor credit. 2. Remote. 3. Paid per task.">
                         Blog Reviewer and Editor
                     </a>
                 </h3>
@@ -558,214 +641,238 @@
             </li>
             <li>
                 <h3>
-                    <a href="description.html?title=Student Podcast Host&company=Alina (CSE, VJCET)&desc=Host and record episodes for a new VJCET student podcast.&requirements=Clear voice and interest in interviewing.&location=Remote/On-Campus&salary=₹300 per episode&overview=Alina is launching a VJCET-focused podcast covering student life, events, and fun stories.&responsibilities=1. Record podcasts. 2. Plan questions. 3. Coordinate with guests.&qualifications=1. Good speaking skills. 2. Friendly personality. 3. Consistency.&benefits=1. Podcast credits. 2. Fun experience. 3. Paid per episode.">
+                    <a
+                        href="description.html?title=Student Podcast Host&company=Alina (CSE, VJCET)&desc=Host and record episodes for a new VJCET student podcast.&requirements=Clear voice and interest in interviewing.&location=Remote/On-Campus&salary=₹300 per episode&overview=Alina is launching a VJCET-focused podcast covering student life, events, and fun stories.&responsibilities=1. Record podcasts. 2. Plan questions. 3. Coordinate with guests.&qualifications=1. Good speaking skills. 2. Friendly personality. 3. Consistency.&benefits=1. Podcast credits. 2. Fun experience. 3. Paid per episode.">
                         Student Podcast Host
                     </a>
                 </h3>
                 <p>Host and record episodes for a new VJCET student podcast.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Club Website Content Curator&company=Hari (IT)&desc=Write and manage content for a VJCET club website.&requirements=Content writing and basic HTML.&location=Remote&salary=₹200 per update&overview=Hari needs help updating and proofreading content on the website of a VJCET club.&responsibilities=1. Gather club updates. 2. Format content. 3. Maintain clarity.&qualifications=1. Strong grammar. 2. Basic HTML. 3. Reliable.&benefits=1. Web credit. 2. Repeated tasks. 3. Paid work.">
+                    <a
+                        href="description.html?title=Club Website Content Curator&company=Hari (IT)&desc=Write and manage content for a VJCET club website.&requirements=Content writing and basic HTML.&location=Remote&salary=₹200 per update&overview=Hari needs help updating and proofreading content on the website of a VJCET club.&responsibilities=1. Gather club updates. 2. Format content. 3. Maintain clarity.&qualifications=1. Strong grammar. 2. Basic HTML. 3. Reliable.&benefits=1. Web credit. 2. Repeated tasks. 3. Paid work.">
                         Club Website Content Curator
                     </a>
                 </h3>
                 <p>Write and manage content for a VJCET club website.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Stage Coordinator for College Day&company=Joseph (EEE, VJCET)&desc=Assist in managing stage events during College Day.&requirements=Good coordination and time management.&location=On-Campus&salary=₹500 for the event&overview=Joseph is looking for students to help run the stage smoothly during College Day celebrations at VJCET.&responsibilities=1. Coordinate performers. 2. Ensure smooth flow. 3. Assist emcees.&qualifications=1. Calm under pressure. 2. Good with people. 3. Organized.&benefits=1. Event recognition. 2. Certificate. 3. Paid role.">
+                    <a
+                        href="description.html?title=Stage Coordinator for College Day&company=Joseph (EEE, VJCET)&desc=Assist in managing stage events during College Day.&requirements=Good coordination and time management.&location=On-Campus&salary=₹500 for the event&overview=Joseph is looking for students to help run the stage smoothly during College Day celebrations at VJCET.&responsibilities=1. Coordinate performers. 2. Ensure smooth flow. 3. Assist emcees.&qualifications=1. Calm under pressure. 2. Good with people. 3. Organized.&benefits=1. Event recognition. 2. Certificate. 3. Paid role.">
                         Stage Coordinator for College Day
                     </a>
                 </h3>
                 <p>Assist in managing stage events during College Day.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Notes Digitizer for Senior Lectures&company=Ananya (Civil)&desc=Convert handwritten notes to neat digital format.&requirements=Typing and formatting skills.&location=Remote&salary=₹30 per page&overview=Ananya needs help digitizing notes taken during lectures to share with juniors.&responsibilities=1. Type clearly. 2. Format properly. 3. Deliver in PDF.&qualifications=1. Fast typing. 2. Neat formatting. 3. Reliable.&benefits=1. Simple job. 2. Paid per page. 3. Regular tasks.">
+                    <a
+                        href="description.html?title=Notes Digitizer for Senior Lectures&company=Ananya (Civil)&desc=Convert handwritten notes to neat digital format.&requirements=Typing and formatting skills.&location=Remote&salary=₹30 per page&overview=Ananya needs help digitizing notes taken during lectures to share with juniors.&responsibilities=1. Type clearly. 2. Format properly. 3. Deliver in PDF.&qualifications=1. Fast typing. 2. Neat formatting. 3. Reliable.&benefits=1. Simple job. 2. Paid per page. 3. Regular tasks.">
                         Notes Digitizer for Senior Lectures
                     </a>
                 </h3>
                 <p>Convert handwritten notes to neat digital format.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Newsletter Designer for VJCET Clubs&company=Sneha (ECE)&desc=Design a monthly newsletter for campus clubs.&requirements=Design skills using Canva or Figma.&location=Remote&salary=₹400 per edition&overview=Sneha is putting together a campus-wide club newsletter at VJCET and needs design help.&responsibilities=1. Design layout. 2. Insert articles. 3. Submit PDF.&qualifications=1. Eye for design. 2. Timely delivery. 3. Creative mind.&benefits=1. Wide visibility. 2. Great portfolio item. 3. Paid monthly.">
+                    <a
+                        href="description.html?title=Newsletter Designer for VJCET Clubs&company=Sneha (ECE)&desc=Design a monthly newsletter for campus clubs.&requirements=Design skills using Canva or Figma.&location=Remote&salary=₹400 per edition&overview=Sneha is putting together a campus-wide club newsletter at VJCET and needs design help.&responsibilities=1. Design layout. 2. Insert articles. 3. Submit PDF.&qualifications=1. Eye for design. 2. Timely delivery. 3. Creative mind.&benefits=1. Wide visibility. 2. Great portfolio item. 3. Paid monthly.">
                         Newsletter Designer for VJCET Clubs
                     </a>
                 </h3>
                 <p>Design a monthly newsletter for campus clubs.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Mini-Project Reviewer&company=Rakesh (Mech)&desc=Review and give feedback on mini-project ideas.&requirements=Project experience and clarity of concepts.&location=Remote&salary=₹100 per project&overview=Rakesh is helping juniors at VJCET finalize their mini-projects and wants reviewers.&responsibilities=1. Read project briefs. 2. Suggest improvements. 3. Point out flaws.&qualifications=1. Good technical knowledge. 2. Constructive feedback skills. 3. Availability.&benefits=1. Mentorship experience. 2. Certificate. 3. Paid review.">
+                    <a
+                        href="description.html?title=Mini-Project Reviewer&company=Rakesh (Mech)&desc=Review and give feedback on mini-project ideas.&requirements=Project experience and clarity of concepts.&location=Remote&salary=₹100 per project&overview=Rakesh is helping juniors at VJCET finalize their mini-projects and wants reviewers.&responsibilities=1. Read project briefs. 2. Suggest improvements. 3. Point out flaws.&qualifications=1. Good technical knowledge. 2. Constructive feedback skills. 3. Availability.&benefits=1. Mentorship experience. 2. Certificate. 3. Paid review.">
                         Mini-Project Reviewer
                     </a>
                 </h3>
                 <p>Review and give feedback on mini-project ideas.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=YouTube Thumbnail Designer&company=Nisha (CG)&desc=Create thumbnails for an academic YouTube channel.&requirements=Design sense and software knowledge.&location=Remote&salary=₹80 per thumbnail&overview=Nisha runs a YouTube channel for academic videos and needs standout thumbnails.&responsibilities=1. Design engaging thumbnails. 2. Match video theme. 3. Deliver on time.&qualifications=1. Creative ideas. 2. Fast delivery. 3. Reliable communication.&benefits=1. Credit on videos. 2. Repeated work. 3. Paid gig.">
+                    <a
+                        href="description.html?title=YouTube Thumbnail Designer&company=Nisha (CG)&desc=Create thumbnails for an academic YouTube channel.&requirements=Design sense and software knowledge.&location=Remote&salary=₹80 per thumbnail&overview=Nisha runs a YouTube channel for academic videos and needs standout thumbnails.&responsibilities=1. Design engaging thumbnails. 2. Match video theme. 3. Deliver on time.&qualifications=1. Creative ideas. 2. Fast delivery. 3. Reliable communication.&benefits=1. Credit on videos. 2. Repeated work. 3. Paid gig.">
                         YouTube Thumbnail Designer
                     </a>
                 </h3>
                 <p>Create thumbnails for an academic YouTube channel.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Data Entry for Lab Records&company=Deepak (IT)&desc=Enter lab experiment results into spreadsheets.&requirements=Attention to detail and basic Excel.&location=On-Campus&salary=₹300 for completion&overview=Deepak needs help transferring handwritten lab records into digital format for submission.&responsibilities=1. Read notes. 2. Enter cleanly. 3. Format properly.&qualifications=1. Accuracy. 2. Basic computer skills. 3. Confidentiality.&benefits=1. Simple task. 2. Quick pay. 3. One-time work.">
+                    <a
+                        href="description.html?title=Data Entry for Lab Records&company=Deepak (IT)&desc=Enter lab experiment results into spreadsheets.&requirements=Attention to detail and basic Excel.&location=On-Campus&salary=₹300 for completion&overview=Deepak needs help transferring handwritten lab records into digital format for submission.&responsibilities=1. Read notes. 2. Enter cleanly. 3. Format properly.&qualifications=1. Accuracy. 2. Basic computer skills. 3. Confidentiality.&benefits=1. Simple task. 2. Quick pay. 3. One-time work.">
                         Data Entry for Lab Records
                     </a>
                 </h3>
                 <p>Enter lab experiment results into spreadsheets.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Voice Assistant Skill Developer&company=Aryan (CSE)&desc=Build a simple Alexa skill for VJCET announcements.&requirements=Basic coding and JSON understanding.&location=Remote&salary=₹600 for project&overview=Aryan is experimenting with voice assistants and wants to make a VJCET announcement skill for Alexa.&responsibilities=1. Code the skill. 2. Test response accuracy. 3. Submit documentation.&qualifications=1. Interest in voice tech. 2. Basic programming. 3. Curiosity.&benefits=1. Fun project. 2. Paid. 3. Innovative experience.">
+                    <a
+                        href="description.html?title=Voice Assistant Skill Developer&company=Aryan (CSE)&desc=Build a simple Alexa skill for VJCET announcements.&requirements=Basic coding and JSON understanding.&location=Remote&salary=₹600 for project&overview=Aryan is experimenting with voice assistants and wants to make a VJCET announcement skill for Alexa.&responsibilities=1. Code the skill. 2. Test response accuracy. 3. Submit documentation.&qualifications=1. Interest in voice tech. 2. Basic programming. 3. Curiosity.&benefits=1. Fun project. 2. Paid. 3. Innovative experience.">
                         Voice Assistant Skill Developer
                     </a>
                 </h3>
                 <p>Build a simple Alexa skill for VJCET announcements.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Transcriber for Seminar Talks&company=Meghna (EEE)&desc=Transcribe recorded audio from seminars to text.&requirements=Listening and typing skills.&location=Remote&salary=₹100 per seminar&overview=Meghna is archiving seminar talks for documentation and needs text versions.&responsibilities=1. Listen carefully. 2. Type clean transcripts. 3. Format properly.&qualifications=1. Fast and accurate typing. 2. Good hearing. 3. Careful editing.&benefits=1. Paid per seminar. 2. Flexible time. 3. Easy work.">
+                    <a
+                        href="description.html?title=Transcriber for Seminar Talks&company=Meghna (EEE)&desc=Transcribe recorded audio from seminars to text.&requirements=Listening and typing skills.&location=Remote&salary=₹100 per seminar&overview=Meghna is archiving seminar talks for documentation and needs text versions.&responsibilities=1. Listen carefully. 2. Type clean transcripts. 3. Format properly.&qualifications=1. Fast and accurate typing. 2. Good hearing. 3. Careful editing.&benefits=1. Paid per seminar. 2. Flexible time. 3. Easy work.">
                         Transcriber for Seminar Talks
                     </a>
                 </h3>
                 <p>Transcribe recorded audio from seminars to text.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Content Curator for VJCET Clubs&company=Keerthana (ECE)&desc=Manage and write updates for different club activities at VJCET.&requirements=Writing and organizational skills.&location=Remote&salary=₹300 per month&overview=Keerthana is compiling monthly newsletters for all active VJCET clubs.&responsibilities=1. Collect info. 2. Summarize activities. 3. Publish updates.&qualifications=1. Good writing. 2. Active in campus clubs. 3. Consistent.&benefits=1. Recognition. 2. Paid monthly. 3. Easy workload.">
+                    <a
+                        href="description.html?title=Content Curator for VJCET Clubs&company=Keerthana (ECE)&desc=Manage and write updates for different club activities at VJCET.&requirements=Writing and organizational skills.&location=Remote&salary=₹300 per month&overview=Keerthana is compiling monthly newsletters for all active VJCET clubs.&responsibilities=1. Collect info. 2. Summarize activities. 3. Publish updates.&qualifications=1. Good writing. 2. Active in campus clubs. 3. Consistent.&benefits=1. Recognition. 2. Paid monthly. 3. Easy workload.">
                         Content Curator for VJCET Clubs
                     </a>
                 </h3>
                 <p>Manage and write updates for different club activities at VJCET.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Classroom Assistant for MATLAB Basics&company=Aravind (EEE)&desc=Assist students with MATLAB for electrical mini projects.&requirements=Basic MATLAB knowledge.&location=On-Campus&salary=₹200 per session&overview=Aravind is mentoring juniors in simulation and needs help during sessions.&responsibilities=1. Explain code. 2. Debug errors. 3. Share examples.&qualifications=1. MATLAB knowledge. 2. Patience. 3. Punctuality.&benefits=1. Teaching experience. 2. Flexible hours. 3. Paid task.">
+                    <a
+                        href="description.html?title=Classroom Assistant for MATLAB Basics&company=Aravind (EEE)&desc=Assist students with MATLAB for electrical mini projects.&requirements=Basic MATLAB knowledge.&location=On-Campus&salary=₹200 per session&overview=Aravind is mentoring juniors in simulation and needs help during sessions.&responsibilities=1. Explain code. 2. Debug errors. 3. Share examples.&qualifications=1. MATLAB knowledge. 2. Patience. 3. Punctuality.&benefits=1. Teaching experience. 2. Flexible hours. 3. Paid task.">
                         Classroom Assistant for MATLAB Basics
                     </a>
                 </h3>
                 <p>Assist students with MATLAB for electrical mini projects.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Infographic Designer for VJCET Workshops&company=Sneha (IT)&desc=Design infographics for workshops and seminars.&requirements=Canva or Figma skills.&location=Remote&salary=₹100 per infographic&overview=Sneha is promoting VJCET technical workshops and wants engaging visual summaries.&responsibilities=1. Visualize data. 2. Use colors/fonts wisely. 3. Deliver print-ready formats.&qualifications=1. Basic design experience. 2. Creative thinking. 3. Clarity in layout.&benefits=1. Portfolio work. 2. Social media credits. 3. Paid per design.">
+                    <a
+                        href="description.html?title=Infographic Designer for VJCET Workshops&company=Sneha (IT)&desc=Design infographics for workshops and seminars.&requirements=Canva or Figma skills.&location=Remote&salary=₹100 per infographic&overview=Sneha is promoting VJCET technical workshops and wants engaging visual summaries.&responsibilities=1. Visualize data. 2. Use colors/fonts wisely. 3. Deliver print-ready formats.&qualifications=1. Basic design experience. 2. Creative thinking. 3. Clarity in layout.&benefits=1. Portfolio work. 2. Social media credits. 3. Paid per design.">
                         Infographic Designer for VJCET Workshops
                     </a>
                 </h3>
                 <p>Design infographics for workshops and seminars.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Script Writer for Campus Skits&company=Gokul (CG)&desc=Write short, humorous scripts for college programs.&requirements=Creative writing and humor.&location=Remote&salary=₹250 per script&overview=Gokul is directing skits for fests and wants original, student-relevant content.&responsibilities=1. Draft scripts. 2. Adjust as needed. 3. Submit on deadline.&qualifications=1. Creativity. 2. College event experience. 3. Comedy writing preferred.&benefits=1. Fun project. 2. Recognition. 3. Paid work.">
+                    <a
+                        href="description.html?title=Script Writer for Campus Skits&company=Gokul (CG)&desc=Write short, humorous scripts for college programs.&requirements=Creative writing and humor.&location=Remote&salary=₹250 per script&overview=Gokul is directing skits for fests and wants original, student-relevant content.&responsibilities=1. Draft scripts. 2. Adjust as needed. 3. Submit on deadline.&qualifications=1. Creativity. 2. College event experience. 3. Comedy writing preferred.&benefits=1. Fun project. 2. Recognition. 3. Paid work.">
                         Script Writer for Campus Skits
                     </a>
                 </h3>
                 <p>Write short, humorous scripts for college programs.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Poster Review Team Member (VJCET Design Panel)&company=Megha (CSE)&desc=Help judge and review poster designs submitted by students.&requirements=Basic design knowledge.&location=Remote&salary=₹200 per review round&overview=Megha is building a student design panel at VJCET and needs reviewers.&responsibilities=1. Rate posters. 2. Give feedback. 3. Attend virtual review meets.&qualifications=1. Visual sense. 2. Constructive feedback. 3. Availability.&benefits=1. Judge certificate. 2. Experience. 3. Payment per round.">
+                    <a
+                        href="description.html?title=Poster Review Team Member (VJCET Design Panel)&company=Megha (CSE)&desc=Help judge and review poster designs submitted by students.&requirements=Basic design knowledge.&location=Remote&salary=₹200 per review round&overview=Megha is building a student design panel at VJCET and needs reviewers.&responsibilities=1. Rate posters. 2. Give feedback. 3. Attend virtual review meets.&qualifications=1. Visual sense. 2. Constructive feedback. 3. Availability.&benefits=1. Judge certificate. 2. Experience. 3. Payment per round.">
                         Poster Review Team Member (VJCET Design Panel)
                     </a>
                 </h3>
                 <p>Help judge and review poster designs submitted by students.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Interview Coordinator for Campus Journal&company=Diya (Civil)&desc=Arrange and conduct interviews with students and faculty.&requirements=Communication and writing skills.&location=On-Campus&salary=₹400 per interview series&overview=Diya is launching a campus journal with monthly interview columns.&responsibilities=1. Schedule interviews. 2. Ask questions. 3. Edit transcripts.&qualifications=1. Friendly nature. 2. English fluency. 3. Reliable.&benefits=1. Networking. 2. Bylines. 3. Paid work.">
+                    <a
+                        href="description.html?title=Interview Coordinator for Campus Journal&company=Diya (Civil)&desc=Arrange and conduct interviews with students and faculty.&requirements=Communication and writing skills.&location=On-Campus&salary=₹400 per interview series&overview=Diya is launching a campus journal with monthly interview columns.&responsibilities=1. Schedule interviews. 2. Ask questions. 3. Edit transcripts.&qualifications=1. Friendly nature. 2. English fluency. 3. Reliable.&benefits=1. Networking. 2. Bylines. 3. Paid work.">
                         Interview Coordinator for Campus Journal
                     </a>
                 </h3>
                 <p>Arrange and conduct interviews with students and faculty.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Excel Tracker for Internships&company=Arjun (Mech)&desc=Create an Excel template to track student internships.&requirements=Excel and formulas knowledge.&location=Remote&salary=₹350 per project&overview=Arjun needs a shared tracker to help students log internship applications.&responsibilities=1. Build spreadsheet. 2. Add filters/charts. 3. Format professionally.&qualifications=1. Excel fluency. 2. Organized. 3. Problem solver.&benefits=1. CV project. 2. Real-world usage. 3. One-time payment.">
+                    <a
+                        href="description.html?title=Excel Tracker for Internships&company=Arjun (Mech)&desc=Create an Excel template to track student internships.&requirements=Excel and formulas knowledge.&location=Remote&salary=₹350 per project&overview=Arjun needs a shared tracker to help students log internship applications.&responsibilities=1. Build spreadsheet. 2. Add filters/charts. 3. Format professionally.&qualifications=1. Excel fluency. 2. Organized. 3. Problem solver.&benefits=1. CV project. 2. Real-world usage. 3. One-time payment.">
                         Excel Tracker for Internships
                     </a>
                 </h3>
                 <p>Create an Excel template to track student internships.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Backend Support for VJCET Web App&company=Nisha (CSE)&desc=Develop backend APIs for a student utility app.&requirements=Node.js or Django basics.&location=Remote&salary=₹800 project-based&overview=Nisha is building a VJCET student help app and needs backend integration support.&responsibilities=1. Setup APIs. 2. Connect database. 3. Debug and test.&qualifications=1. Backend experience. 2. Code clarity. 3. Independent worker.&benefits=1. Project credits. 2. Resume boost. 3. Paid task.">
+                    <a
+                        href="description.html?title=Backend Support for VJCET Web App&company=Nisha (CSE)&desc=Develop backend APIs for a student utility app.&requirements=Node.js or Django basics.&location=Remote&salary=₹800 project-based&overview=Nisha is building a VJCET student help app and needs backend integration support.&responsibilities=1. Setup APIs. 2. Connect database. 3. Debug and test.&qualifications=1. Backend experience. 2. Code clarity. 3. Independent worker.&benefits=1. Project credits. 2. Resume boost. 3. Paid task.">
                         Backend Support for VJCET Web App
                     </a>
                 </h3>
                 <p>Develop backend APIs for a student utility app.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Virtual Assistant for Research Paper Formatting&company=Shreya (IT)&desc=Format and edit research papers for conferences.&requirements=MS Word and referencing styles.&location=Remote&salary=₹100 per paper&overview=Shreya is guiding final year students in paper submissions and needs formatting help.&responsibilities=1. Format structure. 2. Add citations. 3. Proofread.&qualifications=1. Word and grammar. 2. APA/IEEE familiarity. 3. Detail-oriented.&benefits=1. CV boost. 2. Paid per task. 3. Skill improvement.">
+                    <a
+                        href="description.html?title=Virtual Assistant for Research Paper Formatting&company=Shreya (IT)&desc=Format and edit research papers for conferences.&requirements=MS Word and referencing styles.&location=Remote&salary=₹100 per paper&overview=Shreya is guiding final year students in paper submissions and needs formatting help.&responsibilities=1. Format structure. 2. Add citations. 3. Proofread.&qualifications=1. Word and grammar. 2. APA/IEEE familiarity. 3. Detail-oriented.&benefits=1. CV boost. 2. Paid per task. 3. Skill improvement.">
                         Virtual Assistant for Research Paper Formatting
                     </a>
                 </h3>
                 <p>Format and edit research papers for conferences.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Intro Animation Creator for VJCET Channel&company=Adil (AD)&desc=Make animated video intros for campus video content.&requirements=Basic animation tools knowledge.&location=Remote&salary=₹300 per animation&overview=Adil is rebranding the VJCET media team's intro sequences.&responsibilities=1. Create logo intro. 2. Match audio cues. 3. Use templates or original design.&qualifications=1. Motion graphics basics. 2. Creativity. 3. Delivery on time.&benefits=1. Brand credits. 2. Paid gigs. 3. Showcase work.">
+                    <a
+                        href="description.html?title=Intro Animation Creator for VJCET Channel&company=Adil (AD)&desc=Make animated video intros for campus video content.&requirements=Basic animation tools knowledge.&location=Remote&salary=₹300 per animation&overview=Adil is rebranding the VJCET media team's intro sequences.&responsibilities=1. Create logo intro. 2. Match audio cues. 3. Use templates or original design.&qualifications=1. Motion graphics basics. 2. Creativity. 3. Delivery on time.&benefits=1. Brand credits. 2. Paid gigs. 3. Showcase work.">
                         Intro Animation Creator for VJCET Channel
                     </a>
                 </h3>
                 <p>Make animated video intros for campus video content.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Tutoring - Engineering Graphics (VJCET)&company=Ramesh (Mech)&desc=Help students struggling with EG concepts and drawings.&requirements=Knowledge of projections and AutoCAD.&location=On-Campus&salary=₹200 per session&overview=Ramesh wants to support juniors who are falling behind in EG classes.&responsibilities=1. Clarify doubts. 2. Provide examples. 3. Suggest practice methods.&qualifications=1. Scored well in EG. 2. Patient teaching. 3. Responsible.&benefits=1. Reputation. 2. Mentoring. 3. Paid work.">
+                    <a
+                        href="description.html?title=Tutoring - Engineering Graphics (VJCET)&company=Ramesh (Mech)&desc=Help students struggling with EG concepts and drawings.&requirements=Knowledge of projections and AutoCAD.&location=On-Campus&salary=₹200 per session&overview=Ramesh wants to support juniors who are falling behind in EG classes.&responsibilities=1. Clarify doubts. 2. Provide examples. 3. Suggest practice methods.&qualifications=1. Scored well in EG. 2. Patient teaching. 3. Responsible.&benefits=1. Reputation. 2. Mentoring. 3. Paid work.">
                         Tutoring - Engineering Graphics (VJCET)
                     </a>
                 </h3>
                 <p>Help students struggling with EG concepts and drawings.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Club Logo Designer - VJCET Hackers&company=Roshan (CSE)&desc=Design a sleek logo for a new hacking club.&requirements=Logo design skills.&location=Remote&salary=₹250 per logo&overview=Roshan is founding the VJCET Hackers Club and wants a unique identity logo.&responsibilities=1. Create logo ideas. 2. Finalize formats. 3. Deliver high-res copy.&qualifications=1. Creativity. 2. Familiarity with dark themes. 3. Logo tools knowledge.&benefits=1. Featured on merch. 2. Paid. 3. Portfolio work.">
+                    <a
+                        href="description.html?title=Club Logo Designer - VJCET Hackers&company=Roshan (CSE)&desc=Design a sleek logo for a new hacking club.&requirements=Logo design skills.&location=Remote&salary=₹250 per logo&overview=Roshan is founding the VJCET Hackers Club and wants a unique identity logo.&responsibilities=1. Create logo ideas. 2. Finalize formats. 3. Deliver high-res copy.&qualifications=1. Creativity. 2. Familiarity with dark themes. 3. Logo tools knowledge.&benefits=1. Featured on merch. 2. Paid. 3. Portfolio work.">
                         Club Logo Designer - VJCET Hackers
                     </a>
                 </h3>
                 <p>Design a sleek logo for a new hacking club.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Data Entry - VJCET Alumni Records&company=Jinu (Admin)&desc=Update and digitize alumni information records.&requirements=Typing and Excel skills.&location=Remote&salary=₹400 per set of 50 entries&overview=Jinu from admin is digitalizing handwritten alumni records from past years.&responsibilities=1. Enter data. 2. Validate entries. 3. Submit spreadsheets.&qualifications=1. Accuracy. 2. Typing speed. 3. Basic formatting.&benefits=1. Admin experience. 2. Paid task. 3. Good for resume.">
+                    <a
+                        href="description.html?title=Data Entry - VJCET Alumni Records&company=Jinu (Admin)&desc=Update and digitize alumni information records.&requirements=Typing and Excel skills.&location=Remote&salary=₹400 per set of 50 entries&overview=Jinu from admin is digitalizing handwritten alumni records from past years.&responsibilities=1. Enter data. 2. Validate entries. 3. Submit spreadsheets.&qualifications=1. Accuracy. 2. Typing speed. 3. Basic formatting.&benefits=1. Admin experience. 2. Paid task. 3. Good for resume.">
                         Data Entry - VJCET Alumni Records
                     </a>
                 </h3>
                 <p>Update and digitize alumni information records.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Short Film Script Editor&company=Ananya (CG)&desc=Polish and refine story ideas for student short films.&requirements=Writing/editing skills.&location=Remote&salary=₹300 per script&overview=Ananya is working on a short film and needs help editing story and dialogues.&responsibilities=1. Improve script flow. 2. Check dialogue. 3. Format properly.&qualifications=1. Language skills. 2. Creative vision. 3. Script sense.&benefits=1. Film credit. 2. Paid gig. 3. Story involvement.">
+                    <a
+                        href="description.html?title=Short Film Script Editor&company=Ananya (CG)&desc=Polish and refine story ideas for student short films.&requirements=Writing/editing skills.&location=Remote&salary=₹300 per script&overview=Ananya is working on a short film and needs help editing story and dialogues.&responsibilities=1. Improve script flow. 2. Check dialogue. 3. Format properly.&qualifications=1. Language skills. 2. Creative vision. 3. Script sense.&benefits=1. Film credit. 2. Paid gig. 3. Story involvement.">
                         Short Film Script Editor
                     </a>
                 </h3>
@@ -774,100 +881,110 @@
 
             <li>
                 <h3>
-                    <a href="description.html?title=Social Media Manager for VJCET Clubs&company=Neha (EEE)&desc=Manage Instagram and LinkedIn handles for student clubs.&requirements=Social media familiarity and content planning.&location=Remote&salary=₹250 per week&overview=Neha from EEE needs someone to schedule posts, reply to DMs, and create stories for official VJCET clubs.&responsibilities=1. Post content regularly. 2. Maintain engagement. 3. Share updates with team.&qualifications=1. Social media savvy. 2. Good grammar. 3. Organized and responsive.&benefits=1. Public profile credit. 2. Expand media skills. 3. Paid weekly.">
+                    <a
+                        href="description.html?title=Social Media Manager for VJCET Clubs&company=Neha (EEE)&desc=Manage Instagram and LinkedIn handles for student clubs.&requirements=Social media familiarity and content planning.&location=Remote&salary=₹250 per week&overview=Neha from EEE needs someone to schedule posts, reply to DMs, and create stories for official VJCET clubs.&responsibilities=1. Post content regularly. 2. Maintain engagement. 3. Share updates with team.&qualifications=1. Social media savvy. 2. Good grammar. 3. Organized and responsive.&benefits=1. Public profile credit. 2. Expand media skills. 3. Paid weekly.">
                         Social Media Manager for VJCET Clubs
                     </a>
                 </h3>
                 <p>Manage Instagram and LinkedIn handles for student clubs.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Technical Blog Reviewer&company=Anand (CSE)&desc=Review and provide feedback on tech articles written by peers.&requirements=Good understanding of tech topics.&location=Remote&salary=₹100 per article&overview=Anand from CSE wants feedback for improving tech write-ups submitted by juniors.&responsibilities=1. Read blog drafts. 2. Give constructive suggestions. 3. Suggest better phrasing.&qualifications=1. Knowledge in tech. 2. Good editing skills. 3. Patient and helpful.&benefits=1. Help improve student work. 2. Build mentoring skills. 3. Paid per article.">
+                    <a
+                        href="description.html?title=Technical Blog Reviewer&company=Anand (CSE)&desc=Review and provide feedback on tech articles written by peers.&requirements=Good understanding of tech topics.&location=Remote&salary=₹100 per article&overview=Anand from CSE wants feedback for improving tech write-ups submitted by juniors.&responsibilities=1. Read blog drafts. 2. Give constructive suggestions. 3. Suggest better phrasing.&qualifications=1. Knowledge in tech. 2. Good editing skills. 3. Patient and helpful.&benefits=1. Help improve student work. 2. Build mentoring skills. 3. Paid per article.">
                         Technical Blog Reviewer
                     </a>
                 </h3>
                 <p>Review and provide feedback on tech articles written by peers.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Event Anchor for VJCET Programs&company=Kiran (ECE)&desc=Host cultural and tech events at VJCET.&requirements=Confidence and clear speech.&location=On-Campus&salary=₹300 per event&overview=Kiran from ECE is looking for energetic anchors for upcoming fests, including VJCET Day celebrations.&responsibilities=1. Prepare script. 2. Rehearse sessions. 3. Perform on stage.&qualifications=1. Stage presence. 2. Clarity in speech. 3. Friendly and calm.&benefits=1. Be the voice of events. 2. Recognition on stage. 3. Get paid.">
+                    <a
+                        href="description.html?title=Event Anchor for VJCET Programs&company=Kiran (ECE)&desc=Host cultural and tech events at VJCET.&requirements=Confidence and clear speech.&location=On-Campus&salary=₹300 per event&overview=Kiran from ECE is looking for energetic anchors for upcoming fests, including VJCET Day celebrations.&responsibilities=1. Prepare script. 2. Rehearse sessions. 3. Perform on stage.&qualifications=1. Stage presence. 2. Clarity in speech. 3. Friendly and calm.&benefits=1. Be the voice of events. 2. Recognition on stage. 3. Get paid.">
                         Event Anchor for VJCET Programs
                     </a>
                 </h3>
                 <p>Host cultural and tech events at VJCET.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=App UI Design for Startup Club&company=Sreya (IT)&desc=Design mobile app mockups for a club project.&requirements=Figma or UI tool knowledge.&location=Remote&salary=₹500 per design&overview=Sreya from IT is prototyping an app idea and needs UI designs for user testing.&responsibilities=1. Design app screens. 2. Iterate on feedback. 3. Share design files.&qualifications=1. Eye for design. 2. UI/UX basics. 3. Team collaboration.&benefits=1. Feature in credits. 2. Add to your portfolio. 3. Paid design work.">
+                    <a
+                        href="description.html?title=App UI Design for Startup Club&company=Sreya (IT)&desc=Design mobile app mockups for a club project.&requirements=Figma or UI tool knowledge.&location=Remote&salary=₹500 per design&overview=Sreya from IT is prototyping an app idea and needs UI designs for user testing.&responsibilities=1. Design app screens. 2. Iterate on feedback. 3. Share design files.&qualifications=1. Eye for design. 2. UI/UX basics. 3. Team collaboration.&benefits=1. Feature in credits. 2. Add to your portfolio. 3. Paid design work.">
                         App UI Design for Startup Club
                     </a>
                 </h3>
                 <p>Design mobile app mockups for a club project.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Java Debugging Help for VJCET Lab&company=Aditya (CSE)&desc=Assist juniors in debugging Java assignments.&requirements=Core Java knowledge.&location=On-Campus&salary=₹150 per session&overview=Aditya from CSE needs help sessions for juniors stuck on object-oriented programming labs.&responsibilities=1. Help fix bugs. 2. Guide logic building. 3. Explain key concepts.&qualifications=1. Strong in Java. 2. Communicative. 3. Patient tutor.&benefits=1. Mentor recognition. 2. Earn per session. 3. Build teaching experience.">
+                    <a
+                        href="description.html?title=Java Debugging Help for VJCET Lab&company=Aditya (CSE)&desc=Assist juniors in debugging Java assignments.&requirements=Core Java knowledge.&location=On-Campus&salary=₹150 per session&overview=Aditya from CSE needs help sessions for juniors stuck on object-oriented programming labs.&responsibilities=1. Help fix bugs. 2. Guide logic building. 3. Explain key concepts.&qualifications=1. Strong in Java. 2. Communicative. 3. Patient tutor.&benefits=1. Mentor recognition. 2. Earn per session. 3. Build teaching experience.">
                         Java Debugging Help for VJCET Lab
                     </a>
                 </h3>
                 <p>Assist juniors in debugging Java assignments.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Club Logo Design Challenge (VJCET)&company=Design Club&desc=Design a new logo for the VJCET Design Club.&requirements=Graphic design creativity.&location=Remote&salary=₹500 (one-time)&overview=The Design Club at VJCET is running a contest to design its next logo.&responsibilities=1. Submit a clean logo. 2. Present variations. 3. Explain design choices.&qualifications=1. Creative skills. 2. Logo experience preferred. 3. Submit on time.&benefits=1. Logo attribution. 2. Win a prize. 3. Feature on all merch.">
+                    <a
+                        href="description.html?title=Club Logo Design Challenge (VJCET)&company=Design Club&desc=Design a new logo for the VJCET Design Club.&requirements=Graphic design creativity.&location=Remote&salary=₹500 (one-time)&overview=The Design Club at VJCET is running a contest to design its next logo.&responsibilities=1. Submit a clean logo. 2. Present variations. 3. Explain design choices.&qualifications=1. Creative skills. 2. Logo experience preferred. 3. Submit on time.&benefits=1. Logo attribution. 2. Win a prize. 3. Feature on all merch.">
                         Club Logo Design Challenge (VJCET)
                     </a>
                 </h3>
                 <p>Design a new logo for the VJCET Design Club.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Content Summarizer for Class Notes&company=Ishaan (AD)&desc=Summarize lecture notes into 1-page briefs.&requirements=Good note-taking and summarizing skills.&location=Remote&salary=₹100 per summary&overview=Ishaan from AD needs neat summaries of recorded or live lectures for juniors.&responsibilities=1. Read notes. 2. Create a 1-page summary. 3. Ensure clarity.&qualifications=1. Good grammar. 2. Ability to condense info. 3. Neat formatting.&benefits=1. Help juniors. 2. Add to academic portfolio. 3. Earn per task.">
+                    <a
+                        href="description.html?title=Content Summarizer for Class Notes&company=Ishaan (AD)&desc=Summarize lecture notes into 1-page briefs.&requirements=Good note-taking and summarizing skills.&location=Remote&salary=₹100 per summary&overview=Ishaan from AD needs neat summaries of recorded or live lectures for juniors.&responsibilities=1. Read notes. 2. Create a 1-page summary. 3. Ensure clarity.&qualifications=1. Good grammar. 2. Ability to condense info. 3. Neat formatting.&benefits=1. Help juniors. 2. Add to academic portfolio. 3. Earn per task.">
                         Content Summarizer for Class Notes
                     </a>
                 </h3>
                 <p>Summarize lecture notes into 1-page briefs.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Campus Newsletter Editor (VJCET)&company=Editorial Board&desc=Proofread and format the official VJCET student newsletter.&requirements=Editing skills and grammar knowledge.&location=Remote&salary=₹300 per edition&overview=The VJCET editorial board needs an editor to finalize campus updates and stories.&responsibilities=1. Review submissions. 2. Correct grammar. 3. Format final copy.&qualifications=1. English proficiency. 2. Eye for detail. 3. Basic layout tools.&benefits=1. Name in newsletter. 2. Editing experience. 3. Paid editorial work.">
+                    <a
+                        href="description.html?title=Campus Newsletter Editor (VJCET)&company=Editorial Board&desc=Proofread and format the official VJCET student newsletter.&requirements=Editing skills and grammar knowledge.&location=Remote&salary=₹300 per edition&overview=The VJCET editorial board needs an editor to finalize campus updates and stories.&responsibilities=1. Review submissions. 2. Correct grammar. 3. Format final copy.&qualifications=1. English proficiency. 2. Eye for detail. 3. Basic layout tools.&benefits=1. Name in newsletter. 2. Editing experience. 3. Paid editorial work.">
                         Campus Newsletter Editor (VJCET)
                     </a>
                 </h3>
                 <p>Proofread and format the official VJCET student newsletter.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Portfolio Website Builder for Students&company=Nida (CSE)&desc=Create personal websites for final year students.&requirements=HTML/CSS/JS knowledge.&location=Remote&salary=₹800 per site&overview=Nida from CSE is offering website-building support to students creating portfolios for placements.&responsibilities=1. Build static sites. 2. Include student details. 3. Deploy live if needed.&qualifications=1. Good web dev skills. 2. Past work experience. 3. Communication skills.&benefits=1. Paid web gigs. 2. Mention in site credits. 3. Freelance practice.">
+                    <a
+                        href="description.html?title=Portfolio Website Builder for Students&company=Nida (CSE)&desc=Create personal websites for final year students.&requirements=HTML/CSS/JS knowledge.&location=Remote&salary=₹800 per site&overview=Nida from CSE is offering website-building support to students creating portfolios for placements.&responsibilities=1. Build static sites. 2. Include student details. 3. Deploy live if needed.&qualifications=1. Good web dev skills. 2. Past work experience. 3. Communication skills.&benefits=1. Paid web gigs. 2. Mention in site credits. 3. Freelance practice.">
                         Portfolio Website Builder for Students
                     </a>
                 </h3>
                 <p>Create personal websites for final year students.</p>
             </li>
-            
+
             <li>
                 <h3>
-                    <a href="description.html?title=Classroom Poster Illustrator (VJCET)&company=Sneha (S&H)&desc=Draw creative illustrations for VJCET classrooms.&requirements=Drawing or digital art skills.&location=On-Campus&salary=₹200 per poster&overview=Sneha from S&H is designing visual aids for classrooms and wants hand-drawn or digital work.&responsibilities=1. Create concept art. 2. Include diagrams. 3. Submit print-ready files.&qualifications=1. Artistic talent. 2. Neat and themed visuals. 3. Deadline discipline.&benefits=1. Art credits on wall. 2. Earn per piece. 3. Visual storytelling experience.">
+                    <a
+                        href="description.html?title=Classroom Poster Illustrator (VJCET)&company=Sneha (S&H)&desc=Draw creative illustrations for VJCET classrooms.&requirements=Drawing or digital art skills.&location=On-Campus&salary=₹200 per poster&overview=Sneha from S&H is designing visual aids for classrooms and wants hand-drawn or digital work.&responsibilities=1. Create concept art. 2. Include diagrams. 3. Submit print-ready files.&qualifications=1. Artistic talent. 2. Neat and themed visuals. 3. Deadline discipline.&benefits=1. Art credits on wall. 2. Earn per piece. 3. Visual storytelling experience.">
                         Classroom Poster Illustrator (VJCET)
                     </a>
                 </h3>
                 <p>Draw creative illustrations for VJCET classrooms.</p>
             </li>
-            
-            
+
+
             <br><br>
         </ul>
-        
-        
-        
+
+
+
 
     </div>
     <div id="completed" class="completed-jobs">
@@ -899,7 +1016,7 @@
             </li>
         </ul>
     </div>
-    
+
     <div class="nav-bar">
         <a onclick="showTab('jobs')" class="active">Jobs</a>
         <a onclick="showTab('completed')">Completed Jobs</a>
@@ -924,13 +1041,13 @@
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
-    
+
         const userName = getQueryParam("name");
         const userEmail = getQueryParam("email");
-    
+
         console.log("User Name from URL:", userName);
         console.log("User Email from URL:", userEmail);
-    
+
         if (userName && userEmail) {
             document.getElementById("profileName").textContent = userName;
             document.getElementById("profileEmail").textContent = userEmail;
@@ -938,13 +1055,13 @@
             console.log("No user found, redirecting to login...");
             window.location.href = "../login.html"; // Redirect if no user data
         }
-    
+
         function logout() {
             window.close();
             window.location.href = "../login.html"; // Logout by redirecting
         }
     </script>
-    
+
 
 </body>
 
