@@ -5,5 +5,5 @@ export const users = [
     { name: "Sebin", email: "sebin@gmail.com", password: "sebin123" },
     { name: "Mohith", email: "mohith@gmail.com", password: "mohith123" },
     { name: "Alvin", email: "alvin@gmail.com", password: "alvin123" },
-    { name: "Student", email: "student@gmail.com", password: "student123" }
+    { name: "Student", email: "student@edlance.site", password: "student123" }
 ];
